@@ -26,17 +26,17 @@ if your bootloader is not able to reflash itself or something went
 wrong before reflash operation.
 </p>
 <h4>Building instructions</h4>
-<p>Because U-Boot <a href="http://download.berlios.de/wep-linux/u-boot-0.4.6.tar.bz2">source tarball</a> contains also some utilities for
+<p>Because U-Boot <a href="http://download.berlios.de/wep-linux/u-boot-0.4.8.tar.bz2">source tarball</a> contains also some utilities for
 debugging you need to have GDB package installed (developer version
 if you use binary Linux distribution), otherwise compilation fails.
 </p>
 Extract sources
 <pre>
-  tar xjf u-boot-0.4.6.tar.bz2
+  tar xjf u-boot-0.4.8.tar.bz2
 </pre>
 enter u-boot directory
 <pre>
-  cd u-boot-0.4.6
+  cd u-boot-0.4.8
 </pre>
 To prepare U-Boot sources for WEP configuration type and building type
 <pre>
@@ -45,7 +45,7 @@ To prepare U-Boot sources for WEP configuration type and building type
 </pre>
 You may see here "arm-linux-" is prefix to cross compiler to use. Also
 you may found file 'tools/mkimage', that is used to create U-Boot suitable
-kernel files. <a href="http://download.berlios.de/wep-linux/u-boot-0.4.6.bin">u-boot.bin</a>
+kernel files. <a href="http://download.berlios.de/wep-linux/u-boot-0.4.8.bin">u-boot.bin</a>
 is special type of executable file (memory image),
 that might be flashed to WEP using <a href="http://openwince.sourceforge.net/jtag/">JTAG Tools</a>.
 <h4>Simple U-Boot help instructions</h4>
@@ -73,7 +73,7 @@ booter memory if flashing operation fails.</li>
 </ul>
 <p>U-Boot is a powerfull booter with many nice features, that might be optionally compiled in.
 Such as JFFS2 reading and booting ability, integrated environment etc. Default settings
-for WEP platform presented in sources in 0.4.6 version, is to use U-Boot for simple
+for WEP platform presented in sources in 0.4.8 version, is to use U-Boot for simple
 booting monolitic kernels only. Feel free to send us your patches.
 </p><hr></hr>
 <table WIDTH="100%"><tr>
