@@ -29,7 +29,7 @@ patch is naming conventions uses the same notation - patch-2.4.19-rmkX-pxaY-wepZ
 from ARM Linux of MR.King, use pxa patch from MontaVista and finally use our special
 WEP patch.
 </p>
-Our current patch is patch-2.4.19-rmk7-pxa1-wep1 and has this features ready
+Our current patch is <a href="http://download.berlios.de/wep-linux/patch-2.4.19-rmk7-pxa1-wep2.gz">patch-2.4.19-rmk7-pxa1-wep2</a> and has this features ready
 <ul>
 <li>bootable on JFFS2 filesystem</li>
 <li>support for 3 Hitachi displays in framebuffer 8bit and 16bit</li>
@@ -53,7 +53,7 @@ and apply all needed patches
 <pre>
   bunzip2 -c ../patch-2.4.19-rmk7.bz2 | patch -p1
   gunzip -c ../diff-2.4.19-rmk7-pxa1.gz | patch -p1
-  gunzip -c ../patch-2.4.19-rmk7-pxa1-wep1.gz | patch -p1
+  gunzip -c ../patch-2.4.19-rmk7-pxa1-wep2.gz | patch -p1
 </pre>
 To get apply WEP kernel configuration to your patched sources type
 <pre>
