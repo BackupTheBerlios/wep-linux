@@ -16,20 +16,20 @@
 changes visit <a href="http://arm.linux.org.uk">ARM Linux Homepage</a>.
 Our patch is currently based on
 <a href="ftp://ftp.arm.linux.org.uk/pub/armlinux/source/kernel-patches/v2.4/patch-2.4.19-rmk7.bz2">patch-2.4.19-rmk7.bz2</a>
-WEP platform is based on Intel XScale ARM processor, so also visit Monta Vista kernel 
-for <a href="ftp://source.mvista.com/pub/xscale/pxa/diff-2.4.19-rmk7-pxa1.gz">diff-2.4.19-rmk7-pxa1.gz</a> file.
+WEP platform is based on Intel PXA25x XScale ARM processor, so you also need a PXA-specific kernel patch
+from <a href="ftp://ftp.arm.linux.org.uk/pub/linux/arm/people/nico/diff-2.4.19-rmk7-pxa2.gz">diff-2.4.19-rmk7-pxa2.gz</a> file.
 Patches created by ARM crew, namely Mr. Russel King as coordinator, are named
 patch-2.4.19-rmkX. The X is number of patch release (greater is newer) to
 vanilla kernel from <a href="http://www.kernel.org">www.kernel.org</a>.
-Monta Vista kernel patches are named diff-2.4.19-rmkX-pxaY, so X defines RMK patch
+PXA-specific kernel patches are named diff-2.4.19-rmkX-pxaY, so X defines RMK patch
 this diff refers to and Y is version number of current pxa patch. Actually our
 patch is naming conventions uses the same notation - patch-2.4.19-rmkX-pxaY-wepZ.
 </p>
 <p>To get real patched sources ready for WEP platform, download vanilla kernel, use patch
-from ARM Linux of MR.King, use pxa patch from MontaVista and finally use our special
+from ARM Linux of Mr. King, use pxa patch from MontaVista and finally use our special
 WEP patch.
 </p>
-Our current patch is <a href="http://download.berlios.de/wep-linux/patch-2.4.19-rmk7-pxa1-wep2.gz">patch-2.4.19-rmk7-pxa1-wep2</a> and has these features ready
+Our current patch is <a href="http://download.berlios.de/wep-linux/patch-2.4.19-rmk7-pxa2-wep1.bz2">patch-2.4.19-rmk7-pxa2-wep1</a> and has these features ready
 <ul>
 <li>bootable on JFFS2 filesystem</li>
 <li>support for 3 Hitachi displays in framebuffer 8bit and 16bit</li>
@@ -51,9 +51,9 @@ enter linux directory
 </pre>
 and apply all needed patches
 <pre>
-  bunzip2 -c ../patch-2.4.19-rmk7.bz2 | patch -p1
-  gunzip -c ../diff-2.4.19-rmk7-pxa1.gz | patch -p1
-  gunzip -c ../patch-2.4.19-rmk7-pxa1-wep2.gz | patch -p1
+  bzcat ../patch-2.4.19-rmk7.bz2 | patch -p1
+  zcat ../diff-2.4.19-rmk7-pxa2.gz | patch -p1
+  bzcat ../patch-2.4.19-rmk7-pxa2-wep1.bz2 | patch -p1
 </pre>
 To get apply WEP kernel configuration to your patched sources type
 <pre>
@@ -71,10 +71,10 @@ available you may type
 <pre>
   make dep;make
 </pre>
-Hopefully a result vmlinux.bin file is placed in the direcory. For use
+Hopefully a result <code>vmlinux</code> file is placed in the direcory. For use
 with U-Boot loader you need to create U-Boot image file type like this
 <pre>
-  mkimage -A arm -O linux -T kernel -a a0008000 -e a0008000 -C none vmlinux.bin uImage
+  mkimage -A arm -O linux -T kernel -a a0008000 -e a0008000 -C none vmlinux uImage
 </pre>
 "mkimage" is tool compliled with U-Boot compilation. More intructions about
 loading image into U-Boot see our U-Boot help <a href="uboot.html">page</a>.
