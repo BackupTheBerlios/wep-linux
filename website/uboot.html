@@ -16,10 +16,10 @@
 occures. It is located in the FLASH memory, so replacing operation might
 be quite dangerous one. In case of any failure, while this operation
 is in progress device might become unfunctional. We recomend to have
-a JTag software and hardware to be able reload new copy of loader if
+a JTAG software and hardware to be able reload new copy of loader if
 other replacing method fails.
 </p>
-<p>Just a simple explanation of jTag here. Hardwired connection to
+<p>Just a simple explanation of JTAG here. Hardwired connection to
 development board is able to place any data in a FLASH memory while
 XScale processor is stopped. It is slow operation so use it only
 if your bootloader is not able to reflash itself or something went
@@ -46,9 +46,9 @@ To prepare U-Boot sources for WEP configuration type and building type
 You may see here "arm-linux-" is prefix to cross compiler to use. Also
 you may found file 'tools/mkimage', that is used to create U-Boot suitable
 kernel files. 'u-boot.bin' is special type of executable file (memory image),
-that might be flashed to WEP using jTag tools.
+that might be flashed to WEP using <a href="http://openwince.sourceforge.net/jtag/">JTAG Tools</a>.
 <h4>Simple U-Boot help instructions</h4>
-<p>U-Boot is talking on BtUart with speed 115200 baud with no HW control. You may need
+<p>U-Boot is talking on BTUART with speed 115200 baud with no HW control. You may need
 to use kermit or minicom software and serial cable if you want to use U-Boot
 command line oriented environment. Kernel image should be located on address
 40000 and JFFS2 filesystem on address 200000.
@@ -67,7 +67,7 @@ As you might notice suffix '.b' was used, so size parameter is interpreted in by
 in memory so<pre>bootm 40000</pre> will boot stored image in FLASH memory</li>
 <li><pre>protect</pre>Software protection of memory. U-Boot is set to protect first
 FLASH memory sector (its own sector) by default. So if you decide to replace booter
-by U-Boot use this to unprotect area of booter. Be sure you have a jTag tools to reflash
+by U-Boot use this to unprotect area of booter. Be sure you have a <a href="http://openwince.sourceforge.net/jtag">JTAG Tools</a> to reflash
 booter memory if flashing operation fails.</li>
 </ul>
 <p>U-Boot is a powerfull booter with many nice features, that might be optionally compiled in.
