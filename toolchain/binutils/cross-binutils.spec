@@ -1,9 +1,9 @@
-# $Id: cross-binutils.spec,v 1.2 2003/05/14 19:42:18 telka Exp $
+# $Id: cross-binutils.spec,v 1.3 2003/05/15 08:44:57 telka Exp $
 
 Summary: Cross GNU collection of binary utilities.
 Name: cross-binutils
 Version: 2.13.2.1
-Release: 2
+Release: 3
 License: GPL
 Group: Development/Tools
 URL: http://sources.redhat.com/binutils
@@ -13,6 +13,8 @@ Source: ftp://sources.redhat.com/pub/binutils/releases/binutils-2.13.2.1.tar.bz2
 Buildroot: /var/tmp/cross-binutils
 
 %define _prefix /opt/cross
+%define _infodir %{_prefix}/info
+%define _mandir %{_prefix}/man
 
 %description
 This is a collection of binary utlities cross compiled for various targets.
@@ -73,13 +75,13 @@ rm -f %{buildroot}%{_infodir}/dir
 %defattr(-,root,root)
 %{_prefix}/arm-elf/*
 %{_prefix}/bin/arm-elf-*
-%doc %{_mandir}/*
+%doc %{_mandir}/man1/arm-elf-*
 
 %files arm-linux
 %defattr(-,root,root)
 %{_prefix}/arm-linux/*
 %{_prefix}/bin/arm-linux-*
-%doc %{_mandir}/*
+%doc %{_mandir}/man1/arm-linux-*
 
 %clean
 rm -rf build-arm-elf
@@ -87,6 +89,10 @@ rm -rf build-arm-linux
 rm -rf %{buildroot}
 
 %changelog
+* Thu May 15 2003 Marcel Telka <marcel@telka.sk> 2.13.2.1-3
+- fixed path for man and info documentation
+- removed invalid man documentation from packages
+
 * Wed May 14 2003 Marcel Telka <marcel@telka.sk> 2.13.2.1-2
 - added arm-elf target
 - added info documentation into common package
