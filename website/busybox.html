@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>Building BusyBox</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Quanta Plus">
+</head>
+<body>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(U-Boot) <a href="uboot.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(GLibc) <a href="glibc.html">Next</a></td>
+</tr></table>
+<hr></hr>
+<p>The BusyBox was started as project for simplier creation so called rescue disks.
+Its maing goal is it to provide all neccessary tools to be able autonomnly operate
+on Unix kernel. This includes shells, file-utils, compress utils and many more components
+presented in real Unix system world. In fact BusyBox provides all of its functionality
+with one and only executable and many links presenting real commnads like 'ls','chmod',
+'date' or 'dd'. Of course, all implemented commands has very limited features to keep
+BusyBox small. That's why rescue disks likes it.
+</p>
+
+
+
+<p>Untar BusyBox and edit 'Config.h' file located in root of project directory. Carefully
+pick up commands and features you need to have or like to have (remember this commands
+have only very limited implementation) and decide if you later on will replace
+BusyBox implementation with real version of command.
+</p>
+To build type
+<pre>make CROSS=arm-linux-</pre>
+if your cross compiler has "arm-linux-" prefix.
+You may also find usefull 'install.sh' script that installs BusyBox with all links
+in defined directory.
+<pre>./install.sh ../image</pre>
+<p>BusyBox is one and only sofware component you will need to test your Linux on WEP platform.
+Because WEP kernel patch expects to boot root filesystem from JFFS2 filesystem
+located in FLASH memory on address 200000 (hexa), to use freshly compiled BusyBox you will
+need to create a filesystem binary file.
+</p>
+To get JFFS2 binary file use mkfs.jffs2 tool from MTD devices.
+<pre>
+mkfs.jffs -o wep-start.jffs2 -e 256 -p
+</pre>
+Probably worth to be mentioned is the parameter "-e 256", that instructs mkfs.jffs2
+create structures suitable for WEP FLASH memory configuration.
+
+<hr></hr>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(U-Boot) <a href="uboot.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(GLibc) <a href="glibc.html">Next</a></td>
+</tr></table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>Building GLibc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Quanta Plus">
+</head>
+<body>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(BusyBox) <a href="busybox.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(XFree) <a href="xfree.html">Next</a></td>
+</tr></table>
+<hr></hr>
+<p>GLibc is not one and only library runable on handheld platform. For example
+uClibc is available with BusyBox project or other alternatives such as DietLibc
+lies around in the net. Most of GLibc alternatives require less disk space, but
+also provides less functionality. However GLibc is buildable for XScale processor, brings
+great functionality, less possible problems with other software, because desktop systems
+usually use GLibc. That's why we brings intruction here.
+</p>
+<h4>Building instructions</h4>
+We build GLibc <a href="ftp://ftp.gnu.org/pub/gnu/glibc/glibc-2.3.1.tar.gz">glibc-2.3.1.tar.gz</a>
+ with so called add-ons features, namelly linux-threads. Even this is optional
+feature many these days software packages uses it.
+Uncompress tar ball and create special building directory
+<pre>
+  mkdir image
+  mkdir glibc-build
+  tar xzf glibc-2.3.1.tar.gz
+  cd glibc-2.3.1
+  tar xzf ../glibc-linuxthreads-2.3.1.tar.gz
+  cd ../glibc-build
+</pre>
+Expecting cross compiler named "arm-linux-gcc" we build
+<pre>
+../glibc-2.3.1/configure arm-linux --prefix=/usr --with-headers=../linux/include --enable-add-ons
+make CC="arm-linux-gcc -Xlinker -s"
+make install_root=../image install
+</pre>
+<p>Some explanations to previous commands. Setting "--prefix=/usr" we instructs GLibc to compile
+into "/lib" and "/usr/lib" directories. This is used on Linux system for default GLibc installation.
+"--with-headers=../linux/include" we instruct GLibc detect kernel settings we compiled before and
+will use in WEP device. You may need to create link or change patch, if kernel is compiled in different
+location. Switch "--enable-add-ons" instruct to compile also linux-threads we uncompressed into GLibc
+directory.
+</p>
+<p>"-Xlinker -s" will instruct linker to produce libraries without any symbols, so libraries will become
+smaller but will block some debugging features.</p>
+<p>Last "make install_root=../image install" will force to copy files into "../image" directory instead
+original path "/". Do not use root account to compile glibc, because simple "make install" will
+overwrite your default libraries!</p>
+<hr></hr>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(BusyBox) <a href="busybox.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(XFree) <a href="xfree.html">Next</a></td>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>WEP Linux Kernel status</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Quanta Plus">
+</head>
+<body>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left"><a href="index.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(U-Boot) <a href="uboot.html">Next</a></td>
+</tr></table>
+<hr></hr>
+<p>Even ARM proccessor support is located in all current kernel versions, to find out last
+changes visit <a href="http://arm.linux.org.uk">ARM Linux Homepage</a>.
+Our patch is currently based on
+<a href="ftp://ftp.arm.linux.org.uk/pub/armlinux/source/kernel-patches/v2.4/patch-2.4.19-rmk7.bz2">patch-2.4.19-rmk7.bz2</a>
+WEP platform is based on Intel XScale ARM processor, so also visit Monta Vista kernel 
+for <a href="ftp://source.mvista.com/pub/xscale/pxa/diff-2.4.19-rmk7-pxa1.gz">diff-2.4.19-rmk7-pxa1.gz</a> file.
+Patches created by ARM crew, namely Mr. Russel King as coordinator, are named
+patch-2.4.19-rmkX. The X is number of patch release (greater is newer) to
+vanilla kernel from <a href="http://www.kernel.org">www.kernel.org</a>.
+Monta Vista kernel patches are named diff-2.4.19-rmkX-pxaY, so X defines RMK patch
+this diff refers to and Y is version number of current pxa patch. Actually our
+patch is naming conventions uses the same notation - patch-2.4.19-rmkX-pxaY-wepZ.
+</p>
+<p>To get real patched sources ready for WEP platform, download vanilla kernel, use patch
+from ARM Linux of MR.King, use pxa patch from MontaVista and finally use our special
+WEP patch.
+</p>
+Our current patch is patch-2.4.19-rmk7-pxa1-wep1 and has this features ready
+<ul>
+<li>bootable on JFFS2 filesystem</li>
+<li>support for 3 Hitachi displays in framebuffer 8bit and 16bit</li>
+<li>touchpad support (tested on Xfbdev XFree server)</li>
+<li>lcd control driver (supported by our utility)</li>
+</ul>
+<p>WEP platform has some of the HW equipment already supported by ARM version of kernel,
+but not tested by our development team, so we do not recommend to rely to be working properly.
+Feel free to report such a functionality or submit your own patches.</p>
+<h4>Building instructions</h4>
+Place all files into one directory and uncompress 
+<a href="ftp://ftp.kernel.org/pub/linux/kernel/v2.4/linux-2.4.19.tar.bz2">linux-2.4.19.tar.bz2</a> with
+<pre>
+  tar xjf linux-2.4.19.tar.bz2
+</pre>
+enter linux directory
+<pre>
+  cd linux-2.4.19
+</pre>
+and apply all needed patches
+<pre>
+  bunzip2 -c ../patch-2.4.19-rmk7.bz2 | patch -p1
+  gunzip -c ../diff-2.4.19-rmk7-pxa1.gz | patch -p1
+  gunzip -c ../patch-2.4.19-rmk7-pxa1-wep1.gz | patch -p1
+</pre>
+To get apply WEP kernel configuration to your patched sources type
+<pre>
+  make wepep250_config
+</pre>
+Optionally you may have to change some setups in kernel by hand.
+For example, this config is setup as monolitic kernel, so no
+kernel modules are compiled. Also setting framebuffer to type
+of your display is neccessary. Do
+<pre>
+  make menuconfig
+</pre>
+If sources are properly setup and you have arm-linux-gcc named cross compiler
+available you may type
+<pre>
+  make dep;make
+</pre>
+Hopefully a result vmlinux.bin file is placed in the direcory. For use
+with U-Boot loader you need to create U-Boot image file type like this
+<pre>
+  mkimage -A arm -O linux -T kernel -a a0008000 -e a0008000 -C none vmlinux.bin uImage
+</pre>
+"mkimage" is tool compliled with U-Boot compilation. More intructions about
+loading image into U-Boot see our U-Boot help <a href="uboot.html">page</a>.
+<hr></hr>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left"><a href="index.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(U-Boot) <a href="uboot.html">Next</a></td>
+</tr></table>
+</body>
+</html>

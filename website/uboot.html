@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>U-Boot system loader</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Quanta Plus">
+</head>
+<body>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(Kernel) <a href="kernel.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(BusyBox) <a href="busybox.html">Next</a></td>
+</tr></table>
+<hr></hr>
+<p>Bootloader is a first program executed by ARM processor after boot
+occures. It is located in the FLASH memory, so replacing operation might
+be quite dangerous one. In case of any failure, while this operation
+is in progress device might become unfunctional. We recomend to have
+a JTag software and hardware to be able reload new copy of loader if
+other replacing method fails.
+</p>
+<p>Just a simple explanation of jTag here. Hardwired connection to
+development board is able to place any data in a FLASH memory while
+XScale processor is stopped. It is slow operation so use it only
+if your bootloader is not able to reflash itself or something went
+wrong before reflash operation.
+</p>
+<h4>Building instructions</h4>
+<p>Because U-Boot source tar ball contains also some utilities for
+debugging you need to have GDB package installed (developer version
+if you use binary Linux distribution), otherwise compilation fails.
+</p>
+Extract sources
+<pre>
+  tar xjf u-boot-0.3.0.tar.bz2
+</pre>
+enter linux directory
+<pre>
+  cd u-boot-0.3.0
+</pre>
+To prepare U-Boot sources for WEP configuration type and building type
+<pre>
+  make wepep250_config
+  make CROSS_COMPILE=arm-linux-
+</pre>
+You may see here "arm-linux-" is prefix to cross compiler to use. Also
+you may found file 'tools/mkimage', that is used to create U-Boot suitable
+kernel files. 'u-boot.bin' is special type of executable file (memory image),
+that might be flashed to WEP using jTag tools.
+<h4>Simple U-Boot help instructions</h4>
+<p>U-Boot is talking on BtUart with speed 115200 baud with no HW control. You may need
+to use kermit or minicom software and serial cable if you want to use U-Boot
+command line oriented environment. Kernel image should be located on address
+40000 and JFFS2 filesystem on address 200000.
+</p>
+Basic commands
+<ul>
+<li><pre>erase</pre>Erases flash memory by sectors. WEP has 256kB sector size
+in current configuration.<pre>erase 1:1-127</pre> erases all but bootloader memory</li>
+<li><pre>loadb</pre>Loads binary data into memory over serial line using kermit protocol.
+This commmand is strictly RAM oriented, so do not use it to load data into FLASH memory.</li>
+<li><pre>cp</pre>Copy command. Most usefull is using this commmand to fill FLASH memory like
+<pre>loadb a1001000;cp.b a1001000 40000 180000</pre>This will load kernel image into SDRAM
+and later to copy into FLASH from 'a1001000' address to '40000' address and size of '180000'.
+As you might notice suffix '.b' was used, so size parameter is interpreted in bytes.</li>
+<li><pre>bootm</pre>Booting stored image. As parameter you have to use address of image
+in memory so<pre>bootm 40000</pre> will boot stored image in FLASH memory</li>
+<li><pre>protect</pre>Software protection of memory. U-Boot is set to protect first
+FLASH memory sector (its own sector) by default. So if you decide to replace booter
+by U-Boot use this to unprotect area of booter. Be sure you have a jTag tools to reflash
+booter memory if flashing operation fails.</li>
+</ul>
+<p>U-Boot is a powerfull booter with many nice features, that might be optionally compiled in.
+Such as JFFS2 reading and booting ability, integrated environment etc. Default settings
+for WEP platform presented in sources in 0.3.0 version, is to use U-Boot for simple
+booting monilitic kernels only. Feel free to send us your patches.
+</p><hr></hr>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(Kernel) <a href="kernel.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(BusyBox) <a href="busybox.html">Next</a></td>
+</tr></table>
+</body>
+</html>

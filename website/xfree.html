@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>Building XFree server</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Quanta Plus">
+</head>
+<body>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(GLibc) <a href="glibc.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(Home) <a href="index.html">Next</a></td>
+</tr></table>
+<hr></hr>
+<p>In current WEP porting stage we are able to run XFree minimalistic server
+named KDrive. It is operating on framebuffer (already supported) and as
+input device it uses touchpad supported via "tslib".</p>
+<h4>Building instructions</h4>
+Uncompress all files from XFree project.
+Create file name "host.def" in './config/cf/' directory containing
+<pre>
+#define KDriveXServer		YES
+#define TinyXServer		YES
+#define XfbdevServer		YES
+#define TouchScreen		YES
+#define HasTsLib		YES
+</pre>
+If your interest is only to build server, not all supporting stuff add this line
+into host.def
+<pre>
+#define BuildServersOnly	   YES
+</pre>
+Typing
+<pre>
+make World CROSSCOMPILEDIR=/cross-compiler-bin
+</pre>
+<p>Just note "/cross-compiler-bin" is directory containing cross-compiler binaries or
+links to cross compiler without prefix like "arm-linux-".</p>
+Instalation could be complete by
+<pre>
+make install CROSSCOMPILEDIR=/cross-compiler-bin DESTDIR=../image
+</pre>
+<p>Result server name is "Xfbdev" and to get fully operating server you also
+have to cross-compile so called 'tslib' located in CVS of arm.linux.org.uk
+</p>
+Here is the list of XFree version 4.3 download links
+
+<ul>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-1.tgz">X430src-1.tgz</a></li>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-2.tgz">X430src-2.tgz</a></li>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-3.tgz">X430src-3.tgz</a></li>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-4.tgz">X430src-4.tgz</a></li>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-5.tgz">X430src-5.tgz</a></li>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-6.tgz">X430src-6.tgz</a></li>
+<li><a href="ftp://ftp.xfree86.org/pub/XFree86/4.3.0/source/X430src-7.tgz">X430src-7.tgz</a></li>
+</ul>
+<hr></hr>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left">(GLibc) <a href="glibc.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(Home) <a href="index.html">Next</a></td>
+</tr></table>
+</body>
+</html>

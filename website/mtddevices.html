@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>JFFS2 support utilities - MTD Devices</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Quanta Plus">
+</head>
+<body>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left"><a href="index.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(Home) <a href="index.html">Next</a></td>
+</tr></table>
+<hr></hr>
+<p>Related to JFFS2 journaling filesystem we have 2 usefull tips. How to setup
+so called "loopback" mounted filesystem on your host computer and how to
+create mkfs.jffs2 utiltity for creating JFFS2 binary files from directory structure.
+</p>
+<h4>How to activate loopback host computer mounting ability</h4>
+<p>Becuase currently used kernel verzion is 2.4.19 we recommend to you use the
+same kernel version on your host computer. This should eliminate possible
+side effects of different versions of JFFS2 modules.
+</p>
+Kernel setup on host computer
+<ul>
+<li>Activate MTD device (CONFIG_MTD)</li>
+<li>Activate 'Caching block device access to MTD devices' (CONFIG_MTD_BLOCK)</li>
+<li>Activate 'Support for RAM chips in bus mapping' (CONFIG_MTD_RAM) in RAM/ROM/Flash chip dr.</li>
+<li>In 'File systems' activate 'Journalling Flash Sile System v2' (CONFIG_JFFS2_FS)</li>
+</ul>
+If you use binary distribution this configuration may be already compiled. 
+<pre>
+modprobe mtdblock
+modprobe mtdram
+modprobe jffs2
+dd if=YourImageFile of=/dev/mtdblock/0
+mount /dev/mtdblock/0 /mnt/disk -t jffs2
+</pre>
+mtram driver accepts also
+<ul>
+  <li>"total_size=16384" Total size of image in kB => this is 16MB</li>
+  <li>"erase_size=256" Size of flash erase block in kB => WEP has 256kB</li>
+</ul>
+Primary this options might be usefull if you decide to operate on image later used on WEP device.
+For simple creation of new JFFS2 image file we recommend to you use "mkfs.jffs2" tool available
+from <a href="http://www.linux-mtd.infradead.org">MTD project page</a>
+Download sources of MTD project, enter directory utils, and type make. This should compile
+mkfs.jffs2 tool.
+
+
+
+<hr></hr>
+<table WIDTH="100%"><tr>
+<td WIDTH="33%"ALIGN="left"><a href="index.html">Back</a></td>
+<td WIDTH="34%"ALIGN="center"><a href="index.html">Home</a></td>
+<td WIDTH="33%"ALIGN="right">(Home) <a href="index.html">Next</a></td>
+</body>
+</html>
