@@ -1,9 +1,9 @@
-# $Id: cross-gdb.spec,v 1.1 2003/05/14 17:23:06 telka Exp $
+# $Id: cross-gdb.spec,v 1.2 2003/05/15 09:49:44 telka Exp $
 
 Summary: Cross compiled The GNU Project Debugger.
 Name: cross-gdb
 Version: 5.3
-Release: 1
+Release: 2
 License: GPL
 Group: Development/Debuggers
 URL: http://sources.redhat.com/gdb
@@ -13,6 +13,7 @@ Source: ftp://sources.redhat.com/pub/gdb/releases/gdb-5.3.tar.bz2
 Buildroot: /var/tmp/cross-gdb
 
 %define _prefix /opt/cross
+%define _mandir %{_prefix}/man
 
 %description
 This is The GNU Project Debugger cross compiled for various targets.
@@ -74,14 +75,12 @@ rm -rf %{buildroot}%{_prefix}/share
 %defattr(-,root,root)
 %{_prefix}/bin/arm-elf-*
 %{_prefix}/lib/libarm-elf-sim.a
-%doc %{_prefix}/man/man1/arm-elf-run.1
 %doc %{_mandir}/man1/arm-elf-*
 
 %files arm-linux
 %defattr(-,root,root)
 %{_prefix}/bin/arm-linux-*
 %{_prefix}/lib/libarm-linux-sim.a
-%doc %{_prefix}/man/man1/arm-linux-run.1
 %doc %{_mandir}/man1/arm-linux-*
 
 %clean
@@ -90,5 +89,8 @@ rm -rf build-arm-linux
 rm -rf %{buildroot}
 
 %changelog
+* Thu May 15 2003 Marcel Telka <marcel@telka.sk> 5.3-2
+- fixed path for man documentation
+
 * Wed May 14 2003 Marcel Telka <marcel@telka.sk> 5.3-1
 - initial spec file
