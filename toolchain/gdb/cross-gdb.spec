@@ -1,9 +1,9 @@
-# $Id: cross-gdb.spec,v 1.2 2003/05/15 09:49:44 telka Exp $
+# $Id: cross-gdb.spec,v 1.3 2003/07/23 20:40:10 telka Exp $
 
 Summary: Cross compiled The GNU Project Debugger.
 Name: cross-gdb
 Version: 5.3
-Release: 2
+Release: 3
 License: GPL
 Group: Development/Debuggers
 URL: http://sources.redhat.com/gdb
@@ -64,6 +64,7 @@ cd build-arm-elf
 cd ../build-arm-linux
 %makeinstall
 rm -rf %{buildroot}/usr/share/info
+rm -rf %{buildroot}%{_prefix}/info
 rm -f %{buildroot}%{_prefix}/lib/libiberty.a
 rm -rf %{buildroot}%{_prefix}/share
 
@@ -89,6 +90,9 @@ rm -rf build-arm-linux
 rm -rf %{buildroot}
 
 %changelog
+* Wed Jul 23 2003 Marcel Telka <marcel@telka.sk> 5.3-3
+- removed info documentation from Cygwin builds
+
 * Thu May 15 2003 Marcel Telka <marcel@telka.sk> 5.3-2
 - fixed path for man documentation
 
