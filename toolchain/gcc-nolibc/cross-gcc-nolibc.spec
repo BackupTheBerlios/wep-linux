@@ -1,14 +1,14 @@
-# $Id: cross-gcc-nolibc.spec,v 1.1 2003/05/21 10:54:10 telka Exp $
+# $Id: cross-gcc-nolibc.spec,v 1.2 2003/08/09 11:49:06 telka Exp $
 
 Summary: Cross GNU Compiler Collection.
 Name: cross-gcc-nolibc
-Version: 3.3
+Version: 3.3.1
 Release: 1
 License: GPL
 Group: Development/Languages
 URL: http://gcc.gnu.org/
 Packager: Marcel Telka <marcel@telka.sk>
-Source: ftp://sources.redhat.com/pub/gcc/releases/gcc-3.3/gcc-core-3.3.tar.bz2
+Source: ftp://sources.redhat.com/pub/gcc/releases/gcc-3.3.1/gcc-core-3.3.1.tar.bz2
 
 Buildroot: /var/tmp/cross-gcc-nolibc
 
@@ -95,5 +95,8 @@ rm -rf build-arm-linux
 rm -rf %{buildroot}
 
 %changelog
+* Sat Aug 09 2003 Marcel Telka <marcel@telka.sk> 3.3.1-1
+- updated for GCC version 3.3.1
+
 * Wed May 21 2003 Marcel Telka <marcel@telka.sk> 3.3-1
 - initial spec file
