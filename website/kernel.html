@@ -74,7 +74,7 @@ available you may type
 Hopefully a result <code>vmlinux</code> file is placed in the direcory. For use
 with U-Boot loader you need to create U-Boot image file type like this
 <pre>
-  mkimage -A arm -O linux -T kernel -a a0008000 -e a0008000 -C none vmlinux uImage
+  mkimage -A arm -O linux -T kernel -C none -a a0008000 -e a0008000 -n "Linux Kernel Image" -d vmlinux uImage
 </pre>
 "mkimage" is tool compiled with U-Boot compilation. More intructions about
 loading image into U-Boot see our U-Boot help <a href="uboot.html">page</a>.
