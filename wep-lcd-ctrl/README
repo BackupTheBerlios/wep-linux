@@ -1,0 +1,11 @@
+Use your cross compiler to compile source like 
+arm-linux-gcc wep-lcd-ctrl.c -o wep-lcd-ctrl
+
+You may also strip result file
+arm-linux-strip wep-lcd-ctrl
+
+By default all 3 brightness, contrast, backlight intensity are displayed
+--help shows you possible options
+
+On running WEP create node in /dev with mknod lcdctrl c 254 0
+
