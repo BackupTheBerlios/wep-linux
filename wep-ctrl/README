@@ -1,0 +1,12 @@
+Use your cross compiler to compile source like 
+arm-linux-gcc wep-ctrl.c -o wep-ctrl
+
+You may also strip result file
+arm-linux-strip wep-ctrl
+
+Driver is automatically compiled into kernel and creates in
+/dev/misc/wepctrl node
+
+You may control some HW devices of WEP with this utility
+type ./wepctrl --help to get more informations
+

@@ -1,0 +1,19 @@
+
+
+/*
+ * Philips UCB 1400 
+ */
+
+#define WEP_UCB1400_IRQ_GPIO 2
+
+
+
+
+#define WEP_CTRL_GSM_IOCTL 1
+#define WEP_CTRL_IRDA_IOCTL 2
+#define WEP_CTRL_GPS_IOCTL 3
+#define WEP_CTRL_BCR_IOCTL 4
+#define WEP_CTRL_EXTERN_SSUART_IOCTL 5
+
+
+
