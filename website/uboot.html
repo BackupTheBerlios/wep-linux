@@ -26,17 +26,17 @@ if your bootloader is not able to reflash itself or something went
 wrong before reflash operation.
 </p>
 <h4>Building instructions</h4>
-<p>Because U-Boot source tar ball contains also some utilities for
+<p>Because U-Boot <a href="ftp://ftp.denx.de/pub/u-boot/u-boot-0.4.5.tar.bz2">source tarball</a> contains also some utilities for
 debugging you need to have GDB package installed (developer version
 if you use binary Linux distribution), otherwise compilation fails.
 </p>
 Extract sources
 <pre>
-  tar xjf u-boot-0.3.0.tar.bz2
+  tar xjf u-boot-0.4.5.tar.bz2
 </pre>
-enter linux directory
+enter u-boot directory
 <pre>
-  cd u-boot-0.3.0
+  cd u-boot-0.4.5
 </pre>
 To prepare U-Boot sources for WEP configuration type and building type
 <pre>
@@ -67,12 +67,12 @@ As you might notice suffix '.b' was used, so size parameter is interpreted in by
 in memory so<pre>bootm 40000</pre> will boot stored image in FLASH memory</li>
 <li><pre>protect</pre>Software protection of memory. U-Boot is set to protect first
 FLASH memory sector (its own sector) by default. So if you decide to replace booter
-by U-Boot use this to unprotect area of booter. Be sure you have a <a href="http://openwince.sourceforge.net/jtag">JTAG Tools</a> to reflash
+by U-Boot use this to unprotect area of booter. Be sure you have a <a href="http://openwince.sourceforge.net/jtag/">JTAG Tools</a> to reflash
 booter memory if flashing operation fails.</li>
 </ul>
 <p>U-Boot is a powerfull booter with many nice features, that might be optionally compiled in.
 Such as JFFS2 reading and booting ability, integrated environment etc. Default settings
-for WEP platform presented in sources in 0.3.0 version, is to use U-Boot for simple
+for WEP platform presented in sources in 0.4.5 version, is to use U-Boot for simple
 booting monilitic kernels only. Feel free to send us your patches.
 </p><hr></hr>
 <table WIDTH="100%"><tr>
