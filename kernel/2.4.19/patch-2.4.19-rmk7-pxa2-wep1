@@ -1,0 +1,1723 @@
+diff -urN linux-2.4.19-rmk7-pxa2/arch/arm/config.in linux-2.4.19-rmk7-pxa2-wep1/arch/arm/config.in
+--- linux-2.4.19-rmk7-pxa2/arch/arm/config.in	2003-08-12 22:08:53.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/arch/arm/config.in	2003-08-12 22:21:30.000000000 +0200
+@@ -147,6 +147,7 @@
+ dep_bool '  Intel DBPXA250 Development Platform' CONFIG_ARCH_LUBBOCK $CONFIG_ARCH_PXA
+ dep_bool '  Accelent Xscale IDP' CONFIG_ARCH_PXA_IDP $CONFIG_ARCH_PXA
+ dep_bool '  Intrinsyc CerfBoard' CONFIG_ARCH_PXA_CERF $CONFIG_ARCH_PXA
++dep_bool '  ETC WEP EP250' CONFIG_ARCH_WEP_EP250 $CONFIG_ARCH_PXA
+ dep_bool '  Trizeps-II MT6N' CONFIG_ARCH_TRIZEPS2 $CONFIG_ARCH_PXA
+ 
+ if [ "$CONFIG_ARCH_PXA_CERF" = "y" ]; then
+diff -urN linux-2.4.19-rmk7-pxa2/arch/arm/def-configs/wepep250 linux-2.4.19-rmk7-pxa2-wep1/arch/arm/def-configs/wepep250
+--- linux-2.4.19-rmk7-pxa2/arch/arm/def-configs/wepep250	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.19-rmk7-pxa2-wep1/arch/arm/def-configs/wepep250	2003-08-12 22:21:30.000000000 +0200
+@@ -0,0 +1,724 @@
++#
++# Automatically generated make config: don't edit
++#
++CONFIG_ARM=y
++# CONFIG_EISA is not set
++# CONFIG_SBUS is not set
++# CONFIG_MCA is not set
++CONFIG_UID16=y
++CONFIG_RWSEM_GENERIC_SPINLOCK=y
++# CONFIG_RWSEM_XCHGADD_ALGORITHM is not set
++# CONFIG_GENERIC_BUST_SPINLOCK is not set
++# CONFIG_GENERIC_ISA_DMA is not set
++
++#
++# Code maturity level options
++#
++CONFIG_EXPERIMENTAL=y
++# CONFIG_OBSOLETE is not set
++
++#
++# Loadable module support
++#
++CONFIG_MODULES=y
++# CONFIG_MODVERSIONS is not set
++# CONFIG_KMOD is not set
++
++#
++# System Type
++#
++# CONFIG_ARCH_ANAKIN is not set
++# CONFIG_ARCH_ARCA5K is not set
++# CONFIG_ARCH_CLPS7500 is not set
++# CONFIG_ARCH_CLPS711X is not set
++# CONFIG_ARCH_CO285 is not set
++CONFIG_ARCH_PXA=y
++# CONFIG_ARCH_EBSA110 is not set
++# CONFIG_ARCH_CAMELOT is not set
++# CONFIG_ARCH_FOOTBRIDGE is not set
++# CONFIG_ARCH_INTEGRATOR is not set
++# CONFIG_ARCH_OMAHA is not set
++# CONFIG_ARCH_L7200 is not set
++# CONFIG_ARCH_MX1ADS is not set
++# CONFIG_ARCH_RPC is not set
++# CONFIG_ARCH_RISCSTATION is not set
++# CONFIG_ARCH_SA1100 is not set
++# CONFIG_ARCH_SHARK is not set
++# CONFIG_ARCH_AT91RM9200DK is not set
++
++#
++# Archimedes/A5000 Implementations
++#
++
++#
++# Archimedes/A5000 Implementations (select only ONE)
++#
++# CONFIG_ARCH_ARC is not set
++# CONFIG_ARCH_A5K is not set
++
++#
++# Footbridge Implementations
++#
++# CONFIG_ARCH_CATS is not set
++# CONFIG_ARCH_PERSONAL_SERVER is not set
++# CONFIG_ARCH_EBSA285_ADDIN is not set
++# CONFIG_ARCH_EBSA285_HOST is not set
++# CONFIG_ARCH_NETWINDER is not set
++
++#
++# SA11x0 Implementations
++#
++# CONFIG_SA1100_ACCELENT is not set
++# CONFIG_SA1100_ASSABET is not set
++# CONFIG_ASSABET_NEPONSET is not set
++# CONFIG_SA1100_ADSAGC is not set
++# CONFIG_SA1100_ADSBITSY is not set
++# CONFIG_SA1100_ADSBITSYPLUS is not set
++# CONFIG_SA1100_BRUTUS is not set
++# CONFIG_SA1100_CEP is not set
++# CONFIG_SA1100_CERF is not set
++# CONFIG_SA1100_H3100 is not set
++# CONFIG_SA1100_H3600 is not set
++# CONFIG_SA1100_H3800 is not set
++# CONFIG_SA1100_H3XXX is not set
++# CONFIG_H3600_SLEEVE is not set
++# CONFIG_SA1100_EXTENEX1 is not set
++# CONFIG_SA1100_FLEXANET is not set
++# CONFIG_SA1100_FREEBIRD is not set
++# CONFIG_SA1100_FRODO is not set
++# CONFIG_SA1100_GRAPHICSCLIENT is not set
++# CONFIG_SA1100_GRAPHICSMASTER is not set
++# CONFIG_SA1100_HACKKIT is not set
++# CONFIG_SA1100_BADGE4 is not set
++# CONFIG_SA1100_JORNADA720 is not set
++# CONFIG_SA1100_HUW_WEBPANEL is not set
++# CONFIG_SA1100_ITSY is not set
++# CONFIG_SA1100_LART is not set
++# CONFIG_SA1100_NANOENGINE is not set
++# CONFIG_SA1100_OMNIMETER is not set
++# CONFIG_SA1100_PANGOLIN is not set
++# CONFIG_SA1100_PLEB is not set
++# CONFIG_SA1100_PT_SYSTEM3 is not set
++# CONFIG_SA1100_SHANNON is not set
++# CONFIG_SA1100_SHERMAN is not set
++# CONFIG_SA1100_SIMPAD is not set
++# CONFIG_SA1100_SIMPUTER is not set
++# CONFIG_SA1100_PFS168 is not set
++# CONFIG_SA1100_VICTOR is not set
++# CONFIG_SA1100_XP860 is not set
++# CONFIG_SA1100_YOPY is not set
++# CONFIG_SA1100_USB is not set
++# CONFIG_SA1100_USB_NETLINK is not set
++# CONFIG_SA1100_USB_CHAR is not set
++# CONFIG_SA1100_SSP is not set
++
++#
++# Intel PXA250/210 Implementations
++#
++# CONFIG_ARCH_LUBBOCK is not set
++# CONFIG_ARCH_PXA_IDP is not set
++# CONFIG_ARCH_PXA_CERF is not set
++CONFIG_ARCH_WEP_EP250=y
++# CONFIG_ARCH_TRIZEPS2 is not set
++CONFIG_PXA_USB=y
++CONFIG_PXA_USB_NETLINK=y
++CONFIG_PXA_USB_CHAR=y
++
++#
++# CLPS711X/EP721X Implementations
++#
++# CONFIG_ARCH_AUTCPU12 is not set
++# CONFIG_ARCH_CDB89712 is not set
++# CONFIG_ARCH_CLEP7312 is not set
++# CONFIG_ARCH_EDB7211 is not set
++# CONFIG_ARCH_FORTUNET is not set
++# CONFIG_ARCH_GUIDEA07 is not set
++# CONFIG_ARCH_P720T is not set
++# CONFIG_ARCH_EP7211 is not set
++# CONFIG_ARCH_EP7212 is not set
++# CONFIG_ARCH_ACORN is not set
++# CONFIG_FOOTBRIDGE is not set
++# CONFIG_FOOTBRIDGE_HOST is not set
++# CONFIG_FOOTBRIDGE_ADDIN is not set
++
++#
++# Processor Type
++#
++CONFIG_CPU_32=y
++# CONFIG_CPU_26 is not set
++# CONFIG_CPU_ARM610 is not set
++# CONFIG_CPU_ARM710 is not set
++# CONFIG_CPU_ARM720T is not set
++# CONFIG_CPU_ARM920T is not set
++# CONFIG_CPU_ARM922T is not set
++# CONFIG_PLD is not set
++# CONFIG_CPU_ARM926T is not set
++# CONFIG_CPU_ARM1020 is not set
++# CONFIG_CPU_ARM1026 is not set
++# CONFIG_CPU_SA110 is not set
++# CONFIG_CPU_SA1100 is not set
++CONFIG_CPU_32v5=y
++CONFIG_CPU_XSCALE=y
++CONFIG_XSCALE_CACHE_ERRATA=y
++# CONFIG_CPU_32v3 is not set
++# CONFIG_CPU_32v4 is not set
++
++#
++# Processor Features
++#
++# CONFIG_DISCONTIGMEM is not set
++
++#
++# General setup
++#
++# CONFIG_PCI is not set
++# CONFIG_ISA is not set
++# CONFIG_ISA_DMA is not set
++# CONFIG_ZBOOT_ROM is not set
++CONFIG_ZBOOT_ROM_TEXT=0
++CONFIG_ZBOOT_ROM_BSS=0
++# CONFIG_CPU_FREQ is not set
++# CONFIG_HOTPLUG is not set
++# CONFIG_PCMCIA is not set
++# CONFIG_MMC is not set
++CONFIG_NET=y
++CONFIG_SYSVIPC=y
++# CONFIG_BSD_PROCESS_ACCT is not set
++CONFIG_SYSCTL=y
++# CONFIG_XIP_KERNEL is not set
++
++#
++# At least one math emulation must be selected
++#
++CONFIG_FPE_NWFPE=y
++# CONFIG_FPE_FASTFPE is not set
++CONFIG_KCORE_ELF=y
++# CONFIG_KCORE_AOUT is not set
++# CONFIG_BINFMT_AOUT is not set
++CONFIG_BINFMT_ELF=y
++# CONFIG_BINFMT_MISC is not set
++CONFIG_PM=y
++# CONFIG_ARTHUR is not set
++CONFIG_CMDLINE="root=/dev/mtdblock2 mem=32m console=ttyS01,115200n8"
++CONFIG_ALIGNMENT_TRAP=y
++
++#
++# Parallel port support
++#
++# CONFIG_PARPORT is not set
++
++#
++# Memory Technology Devices (MTD)
++#
++CONFIG_MTD=y
++# CONFIG_MTD_DEBUG is not set
++CONFIG_MTD_PARTITIONS=y
++# CONFIG_MTD_CONCAT is not set
++# CONFIG_MTD_REDBOOT_PARTS is not set
++# CONFIG_MTD_CMDLINE_PARTS is not set
++# CONFIG_MTD_AFS_PARTS is not set
++
++#
++# User Modules And Translation Layers
++#
++CONFIG_MTD_CHAR=y
++CONFIG_MTD_BLOCK=y
++# CONFIG_FTL is not set
++# CONFIG_NFTL is not set
++
++#
++# RAM/ROM/Flash chip drivers
++#
++CONFIG_MTD_CFI=y
++# CONFIG_MTD_JEDECPROBE is not set
++CONFIG_MTD_GEN_PROBE=y
++CONFIG_MTD_CFI_ADV_OPTIONS=y
++CONFIG_MTD_CFI_NOSWAP=y
++# CONFIG_MTD_CFI_BE_BYTE_SWAP is not set
++# CONFIG_MTD_CFI_LE_BYTE_SWAP is not set
++CONFIG_MTD_CFI_GEOMETRY=y
++# CONFIG_MTD_CFI_B1 is not set
++# CONFIG_MTD_CFI_B2 is not set
++CONFIG_MTD_CFI_B4=y
++# CONFIG_MTD_CFI_B8 is not set
++# CONFIG_MTD_CFI_I1 is not set
++CONFIG_MTD_CFI_I2=y
++# CONFIG_MTD_CFI_I4 is not set
++# CONFIG_MTD_CFI_I8 is not set
++CONFIG_MTD_CFI_INTELEXT=y
++# CONFIG_MTD_CFI_AMDSTD is not set
++# CONFIG_MTD_RAM is not set
++# CONFIG_MTD_ROM is not set
++# CONFIG_MTD_ABSENT is not set
++# CONFIG_MTD_OBSOLETE_CHIPS is not set
++# CONFIG_MTD_AMDSTD is not set
++# CONFIG_MTD_SHARP is not set
++# CONFIG_MTD_JEDEC is not set
++
++#
++# Mapping drivers for chip access
++#
++# CONFIG_MTD_PHYSMAP is not set
++# CONFIG_MTD_LUBBOCK is not set
++CONFIG_MTD_WEP_EP250=y
++# CONFIG_MTD_NORA is not set
++# CONFIG_MTD_ARM_INTEGRATOR is not set
++# CONFIG_MTD_CDB89712 is not set
++# CONFIG_MTD_SA1100 is not set
++# CONFIG_MTD_DC21285 is not set
++# CONFIG_MTD_IQ80310 is not set
++# CONFIG_MTD_FORTUNET is not set
++# CONFIG_MTD_PXA_CERF is not set
++# CONFIG_MTD_EPXA is not set
++# CONFIG_MTD_AUTCPU12 is not set
++# CONFIG_MTD_EDB7312 is not set
++# CONFIG_MTD_IMPA7 is not set
++# CONFIG_MTD_TRIZEPS2 is not set
++# CONFIG_MTD_PCI is not set
++
++#
++# Self-contained MTD device drivers
++#
++# CONFIG_MTD_PMC551 is not set
++# CONFIG_MTD_SLRAM is not set
++# CONFIG_MTD_MTDRAM is not set
++# CONFIG_MTD_BLKMTD is not set
++
++#
++# Disk-On-Chip Device Drivers
++#
++# CONFIG_MTD_DOC1000 is not set
++# CONFIG_MTD_DOC2000 is not set
++# CONFIG_MTD_DOC2001 is not set
++# CONFIG_MTD_DOCPROBE is not set
++
++#
++# NAND Flash Device Drivers
++#
++# CONFIG_MTD_NAND is not set
++
++#
++# Plug and Play configuration
++#
++# CONFIG_PNP is not set
++# CONFIG_ISAPNP is not set
++
++#
++# Block devices
++#
++# CONFIG_BLK_DEV_FD is not set
++# CONFIG_BLK_DEV_XD is not set
++# CONFIG_PARIDE is not set
++# CONFIG_BLK_CPQ_DA is not set
++# CONFIG_BLK_CPQ_CISS_DA is not set
++# CONFIG_CISS_SCSI_TAPE is not set
++# CONFIG_BLK_DEV_DAC960 is not set
++# CONFIG_BLK_DEV_UMEM is not set
++# CONFIG_BLK_DEV_LOOP is not set
++# CONFIG_BLK_DEV_NBD is not set
++# CONFIG_BLK_DEV_RAM is not set
++# CONFIG_BLK_DEV_INITRD is not set
++
++#
++# Multi-device support (RAID and LVM)
++#
++# CONFIG_MD is not set
++# CONFIG_BLK_DEV_MD is not set
++# CONFIG_MD_LINEAR is not set
++# CONFIG_MD_RAID0 is not set
++# CONFIG_MD_RAID1 is not set
++# CONFIG_MD_RAID5 is not set
++# CONFIG_MD_MULTIPATH is not set
++# CONFIG_BLK_DEV_LVM is not set
++
++#
++# Networking options
++#
++# CONFIG_PACKET is not set
++# CONFIG_NETLINK_DEV is not set
++# CONFIG_NETFILTER is not set
++# CONFIG_FILTER is not set
++CONFIG_UNIX=y
++CONFIG_INET=y
++# CONFIG_IP_MULTICAST is not set
++# CONFIG_IP_ADVANCED_ROUTER is not set
++CONFIG_IP_PNP=y
++# CONFIG_IP_PNP_DHCP is not set
++CONFIG_IP_PNP_BOOTP=y
++# CONFIG_IP_PNP_RARP is not set
++# CONFIG_NET_IPIP is not set
++# CONFIG_NET_IPGRE is not set
++# CONFIG_ARPD is not set
++# CONFIG_INET_ECN is not set
++# CONFIG_SYN_COOKIES is not set
++# CONFIG_IPV6 is not set
++# CONFIG_KHTTPD is not set
++# CONFIG_ATM is not set
++# CONFIG_VLAN_8021Q is not set
++
++#
++#  
++#
++# CONFIG_IPX is not set
++# CONFIG_ATALK is not set
++
++#
++# Appletalk devices
++#
++# CONFIG_DEV_APPLETALK is not set
++# CONFIG_DECNET is not set
++# CONFIG_BRIDGE is not set
++# CONFIG_X25 is not set
++# CONFIG_LAPB is not set
++# CONFIG_LLC is not set
++# CONFIG_NET_DIVERT is not set
++# CONFIG_ECONET is not set
++# CONFIG_WAN_ROUTER is not set
++# CONFIG_NET_FASTROUTE is not set
++# CONFIG_NET_HW_FLOWCONTROL is not set
++
++#
++# QoS and/or fair queueing
++#
++# CONFIG_NET_SCHED is not set
++
++#
++# Network testing
++#
++# CONFIG_NET_PKTGEN is not set
++
++#
++# Network device support
++#
++# CONFIG_NETDEVICES is not set
++
++#
++# Amateur Radio support
++#
++# CONFIG_HAMRADIO is not set
++
++#
++# IrDA (infrared) support
++#
++# CONFIG_IRDA is not set
++
++#
++# ATA/ATAPI/MFM/RLL support
++#
++# CONFIG_IDE is not set
++# CONFIG_BLK_DEV_IDE_MODES is not set
++# CONFIG_BLK_DEV_HD is not set
++
++#
++# SCSI support
++#
++# CONFIG_SCSI is not set
++
++#
++# I2O device support
++#
++# CONFIG_I2O is not set
++# CONFIG_I2O_BLOCK is not set
++# CONFIG_I2O_LAN is not set
++# CONFIG_I2O_SCSI is not set
++# CONFIG_I2O_PROC is not set
++
++#
++# ISDN subsystem
++#
++# CONFIG_ISDN is not set
++
++#
++# Input core support
++#
++# CONFIG_INPUT is not set
++# CONFIG_INPUT_KEYBDEV is not set
++# CONFIG_INPUT_MOUSEDEV is not set
++# CONFIG_INPUT_JOYDEV is not set
++# CONFIG_INPUT_EVDEV is not set
++
++#
++# Character devices
++#
++CONFIG_VT=y
++# CONFIG_VT_CONSOLE is not set
++CONFIG_SERIAL=y
++CONFIG_SERIAL_CONSOLE=y
++# CONFIG_SERIAL_EXTENDED is not set
++# CONFIG_SERIAL_NONSTANDARD is not set
++
++#
++# Serial drivers
++#
++# CONFIG_SERIAL_ANAKIN is not set
++# CONFIG_SERIAL_ANAKIN_CONSOLE is not set
++# CONFIG_SERIAL_AMBA is not set
++# CONFIG_SERIAL_AMBA_CONSOLE is not set
++# CONFIG_SERIAL_CLPS711X is not set
++# CONFIG_SERIAL_CLPS711X_CONSOLE is not set
++# CONFIG_SERIAL_21285 is not set
++# CONFIG_SERIAL_21285_OLD is not set
++# CONFIG_SERIAL_21285_CONSOLE is not set
++# CONFIG_SERIAL_UART00 is not set
++# CONFIG_SERIAL_UART00_CONSOLE is not set
++# CONFIG_SERIAL_SA1100 is not set
++# CONFIG_SERIAL_SA1100_CONSOLE is not set
++# CONFIG_SERIAL_OMAHA is not set
++# CONFIG_SERIAL_OMAHA_CONSOLE is not set
++# CONFIG_SERIAL_AT91US3 is not set
++# CONFIG_SERIAL_AT91US3_CONSOLE is not set
++# CONFIG_SERIAL_8250 is not set
++# CONFIG_SERIAL_8250_CONSOLE is not set
++# CONFIG_SERIAL_8250_EXTENDED is not set
++# CONFIG_SERIAL_8250_MANY_PORTS is not set
++# CONFIG_SERIAL_8250_SHARE_IRQ is not set
++# CONFIG_SERIAL_8250_DETECT_IRQ is not set
++# CONFIG_SERIAL_8250_MULTIPORT is not set
++# CONFIG_SERIAL_8250_HUB6 is not set
++CONFIG_UNIX98_PTYS=y
++CONFIG_UNIX98_PTY_COUNT=256
++
++#
++# I2C support
++#
++# CONFIG_I2C is not set
++
++#
++# L3 serial bus support
++#
++# CONFIG_L3 is not set
++# CONFIG_L3_ALGOBIT is not set
++# CONFIG_L3_BIT_SA1100_GPIO is not set
++
++#
++# Other L3 adapters
++#
++# CONFIG_L3_SA1111 is not set
++# CONFIG_BIT_SA1100_GPIO is not set
++
++#
++# Mice
++#
++# CONFIG_BUSMOUSE is not set
++# CONFIG_MOUSE is not set
++
++#
++# Joysticks
++#
++# CONFIG_INPUT_GAMEPORT is not set
++
++#
++# Input core support is needed for gameports
++#
++
++#
++# Input core support is needed for joysticks
++#
++# CONFIG_QIC02_TAPE is not set
++
++#
++# Watchdog Cards
++#
++# CONFIG_WATCHDOG is not set
++# CONFIG_NVRAM is not set
++# CONFIG_RTC is not set
++CONFIG_PXA_RTC=y
++# CONFIG_DTLK is not set
++# CONFIG_R3964 is not set
++# CONFIG_APPLICOM is not set
++
++#
++# Ftape, the floppy tape device driver
++#
++# CONFIG_FTAPE is not set
++# CONFIG_AGP is not set
++# CONFIG_DRM is not set
++
++#
++# Multimedia devices
++#
++# CONFIG_VIDEO_DEV is not set
++
++#
++# File systems
++#
++# CONFIG_QUOTA is not set
++# CONFIG_AUTOFS_FS is not set
++# CONFIG_AUTOFS4_FS is not set
++# CONFIG_REISERFS_FS is not set
++# CONFIG_REISERFS_CHECK is not set
++# CONFIG_REISERFS_PROC_INFO is not set
++# CONFIG_ADFS_FS is not set
++# CONFIG_ADFS_FS_RW is not set
++# CONFIG_AFFS_FS is not set
++# CONFIG_HFS_FS is not set
++# CONFIG_BFS_FS is not set
++# CONFIG_EXT3_FS is not set
++# CONFIG_JBD is not set
++# CONFIG_JBD_DEBUG is not set
++# CONFIG_FAT_FS is not set
++# CONFIG_MSDOS_FS is not set
++# CONFIG_UMSDOS_FS is not set
++# CONFIG_VFAT_FS is not set
++# CONFIG_EFS_FS is not set
++# CONFIG_JFFS_FS is not set
++CONFIG_JFFS2_FS=y
++CONFIG_JFFS2_FS_DEBUG=0
++# CONFIG_CRAMFS is not set
++CONFIG_TMPFS=y
++CONFIG_RAMFS=y
++# CONFIG_ISO9660_FS is not set
++# CONFIG_JOLIET is not set
++# CONFIG_ZISOFS is not set
++# CONFIG_MINIX_FS is not set
++# CONFIG_VXFS_FS is not set
++# CONFIG_NTFS_FS is not set
++# CONFIG_NTFS_RW is not set
++# CONFIG_HPFS_FS is not set
++CONFIG_PROC_FS=y
++CONFIG_DEVFS_FS=y
++CONFIG_DEVFS_MOUNT=y
++# CONFIG_DEVFS_DEBUG is not set
++CONFIG_DEVPTS_FS=y
++# CONFIG_QNX4FS_FS is not set
++# CONFIG_QNX4FS_RW is not set
++# CONFIG_ROMFS_FS is not set
++# CONFIG_EXT2_FS is not set
++# CONFIG_SYSV_FS is not set
++# CONFIG_UDF_FS is not set
++# CONFIG_UDF_RW is not set
++# CONFIG_UFS_FS is not set
++# CONFIG_UFS_FS_WRITE is not set
++
++#
++# Network File Systems
++#
++# CONFIG_CODA_FS is not set
++# CONFIG_INTERMEZZO_FS is not set
++# CONFIG_NFS_FS is not set
++# CONFIG_NFS_V3 is not set
++# CONFIG_ROOT_NFS is not set
++# CONFIG_NFSD is not set
++# CONFIG_NFSD_V3 is not set
++# CONFIG_SUNRPC is not set
++# CONFIG_LOCKD is not set
++# CONFIG_SMB_FS is not set
++# CONFIG_NCP_FS is not set
++# CONFIG_NCPFS_PACKET_SIGNING is not set
++# CONFIG_NCPFS_IOCTL_LOCKING is not set
++# CONFIG_NCPFS_STRONG is not set
++# CONFIG_NCPFS_NFS_NS is not set
++# CONFIG_NCPFS_OS2_NS is not set
++# CONFIG_NCPFS_SMALLDOS is not set
++# CONFIG_NCPFS_NLS is not set
++# CONFIG_NCPFS_EXTRAS is not set
++# CONFIG_ZISOFS_FS is not set
++# CONFIG_ZLIB_FS_INFLATE is not set
++
++#
++# Partition Types
++#
++# CONFIG_PARTITION_ADVANCED is not set
++CONFIG_MSDOS_PARTITION=y
++# CONFIG_SMB_NLS is not set
++# CONFIG_NLS is not set
++
++#
++# Console drivers
++#
++CONFIG_PC_KEYMAP=y
++# CONFIG_VGA_CONSOLE is not set
++
++#
++# Frame-buffer support
++#
++CONFIG_FB=y
++CONFIG_DUMMY_CONSOLE=y
++# CONFIG_FB_ACORN is not set
++# CONFIG_FB_ANAKIN is not set
++# CONFIG_FB_CLPS711X is not set
++# CONFIG_FB_SA1100 is not set
++CONFIG_FB_PXA=y
++# CONFIG_FB_PXA_8BPP is not set
++CONFIG_FB_PXA_16BPP=y
++# CONFIG_WEP_EP250_VGA is not set
++CONFIG_WEP_EP250_HVGA=y
++# CONFIG_WEP_EP250_QVGA is not set
++# CONFIG_FB_CYBER2000 is not set
++# CONFIG_FB_VIRTUAL is not set
++# CONFIG_FBCON_ADVANCED is not set
++CONFIG_FBCON_CFB2=y
++CONFIG_FBCON_CFB4=y
++CONFIG_FBCON_CFB8=y
++CONFIG_FBCON_CFB16=y
++# CONFIG_FBCON_FONTWIDTH8_ONLY is not set
++# CONFIG_FBCON_FONTS is not set
++CONFIG_FONT_8x8=y
++CONFIG_FONT_8x16=y
++
++#
++# Sound
++#
++CONFIG_SOUND=y
++# CONFIG_SOUND_BT878 is not set
++# CONFIG_SOUND_CMPCI is not set
++# CONFIG_SOUND_EMU10K1 is not set
++# CONFIG_MIDI_EMU10K1 is not set
++# CONFIG_SOUND_FUSION is not set
++# CONFIG_SOUND_CS4281 is not set
++# CONFIG_SOUND_ES1370 is not set
++# CONFIG_SOUND_ES1371 is not set
++# CONFIG_SOUND_ESSSOLO1 is not set
++# CONFIG_SOUND_MAESTRO is not set
++# CONFIG_SOUND_MAESTRO3 is not set
++# CONFIG_SOUND_ICH is not set
++# CONFIG_SOUND_RME96XX is not set
++# CONFIG_SOUND_SONICVIBES is not set
++# CONFIG_SOUND_TRIDENT is not set
++# CONFIG_SOUND_MSNDCLAS is not set
++# CONFIG_SOUND_MSNDPIN is not set
++# CONFIG_SOUND_VIA82CXXX is not set
++# CONFIG_MIDI_VIA82CXXX is not set
++# CONFIG_SOUND_OSS is not set
++# CONFIG_SOUND_VIDC is not set
++# CONFIG_SOUND_WAVEARTIST is not set
++CONFIG_SOUND_PXA_AC97=y
++# CONFIG_SOUND_TVMIXER is not set
++
++#
++# Multimedia Capabilities Port drivers
++#
++# CONFIG_MCP is not set
++# CONFIG_MCP_SA1100 is not set
++# CONFIG_MCP_UCB1200 is not set
++# CONFIG_MCP_UCB1200_AUDIO is not set
++# CONFIG_MCP_UCB1200_TS is not set
++CONFIG_MCP_UCB1400_TS=y
++
++#
++# USB support
++#
++# CONFIG_USB is not set
++
++#
++# Bluetooth support
++#
++# CONFIG_BLUEZ is not set
++
++#
++# Kernel hacking
++#
++CONFIG_FRAME_POINTER=y
++CONFIG_DEBUG_USER=y
++# CONFIG_DEBUG_INFO is not set
++# CONFIG_NO_PGT_CACHE is not set
++CONFIG_DEBUG_KERNEL=y
++# CONFIG_DEBUG_SLAB is not set
++# CONFIG_MAGIC_SYSRQ is not set
++# CONFIG_DEBUG_SPINLOCK is not set
++# CONFIG_DEBUG_WAITQ is not set
++# CONFIG_DEBUG_BUGVERBOSE is not set
++# CONFIG_DEBUG_ERRORS is not set
++CONFIG_DEBUG_LL=y
++# CONFIG_DEBUG_DC21285_PORT is not set
++# CONFIG_DEBUG_CLPS711X_UART2 is not set
+diff -urN linux-2.4.19-rmk7-pxa2/arch/arm/kernel/debug-armv.S linux-2.4.19-rmk7-pxa2-wep1/arch/arm/kernel/debug-armv.S
+--- linux-2.4.19-rmk7-pxa2/arch/arm/kernel/debug-armv.S	2003-08-12 22:08:53.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/arch/arm/kernel/debug-armv.S	2003-08-12 22:21:30.000000000 +0200
+@@ -228,7 +228,11 @@
+ 		tst	\rx, #1			@ MMU enabled?
+ 		moveq	\rx, #0x40000000		@ physical
+ 		movne	\rx, #io_p2v(0x40000000)	@ virtual
++#if defined(CONFIG_ARCH_WEP_EP250)		
++		orr	\rx, \rx, #0x00200000		@ BFUART
++#else
+ 		orr	\rx, \rx, #0x00100000		@ FFUART
++#endif
+ 		.endm
+ 
+ 		.macro	senduart,rd,rx
+diff -urN linux-2.4.19-rmk7-pxa2/arch/arm/mach-pxa/Makefile linux-2.4.19-rmk7-pxa2-wep1/arch/arm/mach-pxa/Makefile
+--- linux-2.4.19-rmk7-pxa2/arch/arm/mach-pxa/Makefile	2003-08-12 22:08:54.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/arch/arm/mach-pxa/Makefile	2003-08-12 22:21:30.000000000 +0200
+@@ -26,6 +26,7 @@
+ obj-$(CONFIG_ARCH_INNOKOM) += innokom.o
+ obj-$(CONFIG_ARCH_LUBBOCK) += lubbock.o
+ obj-$(CONFIG_ARCH_PXA_CERF) += cerf.o
++obj-$(CONFIG_ARCH_WEP_EP250) += wep-ep250.o
+ obj-$(CONFIG_ARCH_PXA_IDP) += idp.o
+ obj-$(CONFIG_ARCH_TRIZEPS2) += trizeps2.o
+ 
+diff -urN linux-2.4.19-rmk7-pxa2/arch/arm/mach-pxa/wep-ep250.c linux-2.4.19-rmk7-pxa2-wep1/arch/arm/mach-pxa/wep-ep250.c
+--- linux-2.4.19-rmk7-pxa2/arch/arm/mach-pxa/wep-ep250.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.19-rmk7-pxa2-wep1/arch/arm/mach-pxa/wep-ep250.c	2003-08-12 22:21:30.000000000 +0200
+@@ -0,0 +1,96 @@
++/*
++ * linux/arch/arm/mach-pxa/wep-ep250.c
++ *
++ * Copyright (C) 2003 ETC s.r.o.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * Written by Peter Figuli <peposh@etc.sk>, 2003
++ *
++ */
++
++
++#include <linux/init.h>
++#include <linux/fs.h>
++#include <linux/interrupt.h>
++#include <asm/types.h>
++#include <asm/setup.h>
++#include <asm/memory.h>
++#include <asm/mach-types.h>
++#include <asm/hardware.h>
++#include <asm/irq.h>
++#include <asm/mach/arch.h>
++#include <asm/mach/map.h>
++#include <asm/mach/irq.h>
++#include <asm/arch/irq.h>
++
++#include "generic.h"
++
++
++static int __init wep_init(void){
++	return 0;
++}
++
++__initcall(wep_init);
++
++
++static void __init
++wep_fixup(struct machine_desc *desc, struct param_struct *params,
++		char **cmdline, struct meminfo *mi)
++{
++	SET_BANK (0, 0xa0000000, 32<<20);
++	mi->nr_banks      = 1;
++}
++
++static void __init wep_init_irq(void)
++{
++	pxa_init_irq();
++#if defined( CONFIG_MCP_UCB1400_TS )
++	set_GPIO_IRQ_edge( 2, GPIO_RISING_EDGE | GPIO_FALLING_EDGE );
++#endif
++
++
++}
++
++static void __init wep_map_io(void)
++{
++	pxa_map_io();
++
++/*------------------------------------------------------------*/
++/* Following code should be moved later in other driver(s)*/
++#ifdef CONFIG_FB_PXA
++	/* Turn on back light on Hitachi (640x480/640x240)*/
++	PWM_CTRL1 = 0x3F;
++	PWM_PERVAL1 = 0xF;
++	/*PWM_PWDUTY1 = 0x00;*/
++	set_GPIO_mode(GPIO17_PWM1_MD);
++	
++	/* Set contrast*/
++	PWM_CTRL0 = 0;
++	PWM_PERVAL0 = 0xFF;
++#if defined( CONFIG_WEP_EP250_VGA)	
++	PWM_PWDUTY0 = 0x98;
++#else	
++	PWM_PWDUTY0 = 0xA8;
++#endif
++	set_GPIO_mode( GPIO16_PWM0_MD );
++
++	GPSR2 = GPIO_bit( GPIO77_LCD_ACBIAS );
++#endif /* CONFIG_FB_PXA */
++/* USB stuff*/
++	GPSR2 = 1 << 15;
++	GPDR2 |= 1 << 15;
++
++/*------------------------------------------------------------*/
++}
++
++MACHINE_START(WEP_EP250, "ETC Wireless Embedded Platform EP250")
++	MAINTAINER("ETC s.r.o.")
++	BOOT_MEM(0xa0000000, 0x40000000, io_p2v(0x40000000))
++	FIXUP(wep_fixup)
++	MAPIO(wep_map_io)
++	INITIRQ(wep_init_irq)
++MACHINE_END
+diff -urN linux-2.4.19-rmk7-pxa2/Documentation/Configure.help linux-2.4.19-rmk7-pxa2-wep1/Documentation/Configure.help
+--- linux-2.4.19-rmk7-pxa2/Documentation/Configure.help	2003-08-12 22:08:52.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/Documentation/Configure.help	2003-08-12 22:21:30.000000000 +0200
+@@ -4303,6 +4303,12 @@
+   Say Y here if you intend to run this kernel on a FutureTV (nee Nexus
+   Electronics) StrongARM PCI card.
+ 
++ETC Wireless Embedded Platform EP250
++CONFIG_ARCH_WEP_EP250
++  The WEP EP250 - Intel PXA250 based embeded system.
++  More informations available: www.etc.sk
++
++
+ ANAKIN Vehicle Telematics Platform
+ CONFIG_ARCH_ANAKIN
+   The Anakin is a StrongArm based SA110 - 2 DIN Vehicle Telematics Platform.
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/char/Makefile linux-2.4.19-rmk7-pxa2-wep1/drivers/char/Makefile
+--- linux-2.4.19-rmk7-pxa2/drivers/char/Makefile	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/char/Makefile	2003-08-12 22:21:30.000000000 +0200
+@@ -292,6 +292,7 @@
+ obj-$(CONFIG_PXA_WATCHDOG) += sa1100_wdt.o
+ obj-$(CONFIG_OMAHA_WATCHDOG) += omaha_wdt.o
+ obj-$(CONFIG_SOFT_WATCHDOG) += softdog.o
++obj-$(CONFIG_ARCH_WEP_EP250) += wep-ctrl.o
+ 
+ # I2C char devices
+ obj-$(CONFIG_I2C_DS1307) += ds1307.o
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/char/wep-ctrl.c linux-2.4.19-rmk7-pxa2-wep1/drivers/char/wep-ctrl.c
+--- linux-2.4.19-rmk7-pxa2/drivers/char/wep-ctrl.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/char/wep-ctrl.c	2003-08-12 22:21:30.000000000 +0200
+@@ -0,0 +1,229 @@
++/*
++ * drivers/char/wep-ctrl.c
++ *
++ * Copyright (C) 2003 ETC s.r.o.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * Written by Peter Figuli <peposh@etc.sk>, 2003
++ *
++ */
++
++#include <linux/config.h>
++#include <linux/module.h>
++#include <linux/kernel.h>
++#include <linux/sched.h>
++#include <linux/errno.h>
++#include <linux/string.h>
++#include <linux/ctype.h>
++#include <linux/mm.h>
++#include <linux/init.h>
++#include <linux/delay.h>
++#include <linux/miscdevice.h>
++#include <asm/arch/wep-ep250.h>
++
++
++#include <asm/system.h>
++#include <asm/hardware.h>
++#include <asm/io.h>
++#include <asm/irq.h>
++#include <asm/uaccess.h>
++
++
++/*
++ * Uncommnet following line to get debug informations
++ */
++//#define DEBUG       1
++
++
++static int wepctrl_ioctl( struct inode * inode, struct file *filp,
++			  unsigned int cmd , unsigned long arg );
++static int wepctrl_open( struct inode *inode, struct file *filp );
++static int wepctrl_close( struct inode *inode, struct file *filp );
++
++
++
++static struct file_operations wepctrl_operations = {
++  	owner:		THIS_MODULE,
++	ioctl:		wepctrl_ioctl,
++	open:		wepctrl_open,
++	release:	wepctrl_close
++};
++
++
++static struct miscdevice wepctrl_device = {
++	minor:	WEP_CTRL_MINOR,
++	name:	"wepctrl",
++	fops: 	&wepctrl_operations
++};
++
++
++static void wepctrl_ssuart_startup( void ){
++  static int startup = 0;
++
++  if( !startup ){
++    set_GPIO_mode(GPIO46_STRXD_MD);
++    set_GPIO_mode(GPIO47_STTXD_MD);
++    startup = 1;
++  }
++}
++
++
++static void wepctrl_ffuart_startup( void ){
++  static int startup = 0;
++
++  if( !startup ){
++    set_GPIO_mode(GPIO34_FFRXD_MD);
++    set_GPIO_mode(GPIO39_FFTXD_MD);
++    set_GPIO_mode(GPIO37_FFDSR_MD);
++    set_GPIO_mode(GPIO35_FFCTS_MD);
++    set_GPIO_mode(GPIO41_FFRTS_MD);
++    set_GPIO_mode(GPIO40_FFDTR_MD);
++    set_GPIO_mode(GPIO36_FFDCD_MD);
++    startup = 1;
++  }
++}
++
++
++
++static int wepctrl_ioctl( struct inode * inode, struct file *filp,
++                          unsigned int cmd , unsigned long arg ){
++	
++  int result = -EINVAL;
++  static int GSM_startup = 0;
++
++#ifdef DEBUG
++  printk( KERN_INFO "WEPctrl_ioctl: cmd=%d, arg=%ld\n", cmd, arg );
++#endif
++  
++
++	
++  switch( cmd ){
++    case WEP_CTRL_GSM_IOCTL:
++      
++      if( !GSM_startup && arg ){
++	if( arg ){
++	  GPSR( 32 ) = GPIO_bit( 32 );
++	  set_current_state( TASK_UNINTERRUPTIBLE );
++	  schedule_timeout( HZ / 100 ); // Wait 10ms
++	
++      
++	  GPCR( 32 )  = GPIO_bit( 32 );
++	  set_current_state( TASK_UNINTERRUPTIBLE );
++	  schedule_timeout( HZ / 10 ); // Wait 100ms
++	
++	  GPSR( 32 ) = GPIO_bit( 32 );
++	  set_current_state( TASK_UNINTERRUPTIBLE );
++	  schedule_timeout( HZ ); // Wait 1 sec (900 shoud be OK)
++	}else{
++	  printk( "Feature is not implemented\n" );
++	  /* 
++	     <appology>
++	     The modem has to be turned off by AT command set.
++	     This is also critical if sleep mode is activated.
++	     Due to this, turning off by HW modem is not recomended so,
++	     this kind of driver is not be suited for shutdown operation.
++	     In case of specialized serial driver, shutdown may be 
++	     proccessed by driver on higher level...
++
++	     In any case, there is no HW shutdown implemented 
++	     in current version of driver.
++	     </appology>
++	     */
++	}
++	
++      
++	// FFUART stuff
++	wepctrl_ffuart_startup();
++      }
++
++      break;
++
++    case WEP_CTRL_IRDA_IOCTL:
++      if( arg ){
++	GPCR(  9 ) = GPIO_bit(  9 );
++	GPCR( 10 ) = GPIO_bit( 10 );
++	wepctrl_ssuart_startup();
++      }
++      break;
++      
++    case WEP_CTRL_GPS_IOCTL:
++      if( arg ){
++	GPCR(  9 )  = GPIO_bit( 9 );
++	GPSR( 10 )  = GPIO_bit( 10 );
++       
++	GPSR( 22 ) = GPIO_bit( 22 );
++      }else{
++	GPCR( 22 ) = GPIO_bit( 22 );
++      }
++
++      wepctrl_ssuart_startup(); 
++      break;
++
++
++    case WEP_CTRL_BCR_IOCTL:
++      if( arg ){
++	GPSR(  9 ) = GPIO_bit(  9 );
++	GPCR( 10 ) = GPIO_bit( 10 );
++	wepctrl_ssuart_startup();
++      }
++      break;
++
++    case WEP_CTRL_EXTERN_SSUART_IOCTL:
++      if( arg ){
++	GPSR(  9 ) = GPIO_bit(  9 );
++	GPSR( 10 ) = GPIO_bit( 10 );
++	wepctrl_ssuart_startup();
++      }
++      break;
++      
++  
++      
++    default:
++      printk( KERN_ERR "WEPctrl_ioctl: invalid ioctl\n");
++      break;
++
++  }
++
++
++  return result;
++}
++
++static int wepctrl_open( struct inode *inode, struct file *filp ){
++  return 0;
++}
++
++static int wepctrl_close( struct inode *inode, struct file *filp ){
++  return 0;
++}
++
++static void __init wepctrl_init( void ){
++
++  int result;
++
++  result = misc_register( &wepctrl_device );
++  
++  if( result ){
++    printk(KERN_INFO "WEPctrl was unable to register\n" );
++  }else{
++    GPDR(  9 ) |= GPIO_bit( 9 );	// SSUART shared
++    GPDR( 10 ) |= GPIO_bit( 10 );	// SSUART shared
++    
++    GPDR( 22 ) |= GPIO_bit( 22 );	// GPS on/off
++    
++    GPDR( 32 ) |= GPIO_bit( 32 );	// GSM modem
++  }
++
++  return result;
++}
++
++static void __exit wepctrl_cleanup( void ){
++  misc_deregister( &wepctrl_device );
++}
++
++module_init( wepctrl_init);
++module_exit( wepctrl_cleanup);
++
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/mtd/maps/Config.in linux-2.4.19-rmk7-pxa2-wep1/drivers/mtd/maps/Config.in
+--- linux-2.4.19-rmk7-pxa2/drivers/mtd/maps/Config.in	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/mtd/maps/Config.in	2003-08-12 22:21:30.000000000 +0200
+@@ -72,6 +72,7 @@
+ 
+ if [ "$CONFIG_ARM" = "y" ]; then
+    dep_tristate '  CFI Flash device mapped on Lubbock board' CONFIG_MTD_LUBBOCK $CONFIG_MTD_CFI $CONFIG_ARCH_LUBBOCK $CONFIG_MTD_PARTITIONS
++   dep_tristate '  CFI Flash device mapped on WEP EP250 board' CONFIG_MTD_WEP_EP250 $CONFIG_MTD_CFI $CONFIG_ARCH_WEP_EP250 $CONFIG_MTD_PARTITIONS
+    dep_tristate '  CFI Flash device mapped on Nora' CONFIG_MTD_NORA $CONFIG_MTD_CFI
+    dep_tristate '  CFI Flash device mapped on ARM Integrator/P720T' CONFIG_MTD_ARM_INTEGRATOR $CONFIG_MTD_CFI
+    dep_tristate '  Cirrus CDB89712 evaluation board mappings' CONFIG_MTD_CDB89712 $CONFIG_MTD_CFI $CONFIG_ARCH_CDB89712
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/mtd/maps/Makefile linux-2.4.19-rmk7-pxa2-wep1/drivers/mtd/maps/Makefile
+--- linux-2.4.19-rmk7-pxa2/drivers/mtd/maps/Makefile	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/mtd/maps/Makefile	2003-08-12 22:21:30.000000000 +0200
+@@ -17,6 +17,7 @@
+ obj-$(CONFIG_MTD_IQ80310)	+= iq80310.o
+ obj-$(CONFIG_MTD_LUBBOCK)	+= lubbock.o
+ obj-$(CONFIG_MTD_PXA_CERF)	+= pxa_cerf.o
++obj-$(CONFIG_MTD_WEP_EP250)	+= wep-ep250.o
+ obj-$(CONFIG_MTD_TRIZEPS2)	+= trizeps2.o
+ obj-$(CONFIG_MTD_L440GX)	+= l440gx.o
+ obj-$(CONFIG_MTD_AMD766ROM)	+= amd766rom.o
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/mtd/maps/wep-ep250.c linux-2.4.19-rmk7-pxa2-wep1/drivers/mtd/maps/wep-ep250.c
+--- linux-2.4.19-rmk7-pxa2/drivers/mtd/maps/wep-ep250.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/mtd/maps/wep-ep250.c	2003-08-12 22:21:30.000000000 +0200
+@@ -0,0 +1,167 @@
++/*
++ * $Id:
++ *
++ * Map driver for the wep developer platform.
++ *
++ * Author:	Nicolas Pitre
++ * Copyright:	(C) 2001 MontaVista Software Inc.
++ * 
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ */
++
++#include <linux/module.h>
++#include <linux/types.h>
++#include <linux/kernel.h>
++#include <asm/io.h>
++#include <linux/mtd/mtd.h>
++#include <linux/mtd/map.h>
++#include <linux/mtd/partitions.h>
++
++
++#define WINDOW_ADDR 	0
++#define WINDOW_SIZE 	32<<20
++
++static __u8 wep_read8(struct map_info *map, unsigned long ofs)
++{
++	return *(__u8 *)(map->map_priv_1 + ofs);
++}
++
++static __u16 wep_read16(struct map_info *map, unsigned long ofs)
++{
++	return *(__u16 *)(map->map_priv_1 + ofs);
++}
++
++static __u32 wep_read32(struct map_info *map, unsigned long ofs)
++{
++	return *(__u32 *)(map->map_priv_1 + ofs);
++}
++
++static void wep_copy_from(struct map_info *map, void *to, unsigned long from, ssize_t len)
++{
++	memcpy(to, (void *)(map->map_priv_1 + from), len);
++}
++
++static void wep_write8(struct map_info *map, __u8 d, unsigned long adr)
++{
++	*(__u8 *)(map->map_priv_1 + adr) = d;
++}
++
++static void wep_write16(struct map_info *map, __u16 d, unsigned long adr)
++{
++	*(__u16 *)(map->map_priv_1 + adr) = d;
++}
++
++static void wep_write32(struct map_info *map, __u32 d, unsigned long adr)
++{
++	*(__u32 *)(map->map_priv_1 + adr) = d;
++}
++
++static void wep_copy_to(struct map_info *map, unsigned long to, const void *from, ssize_t len)
++{
++	memcpy((void *)(map->map_priv_1 + to), from, len);
++}
++
++static struct map_info wep_map = {
++	name: "wep flash",
++	size: WINDOW_SIZE,
++	read8:		wep_read8,
++	read16:		wep_read16,
++	read32:		wep_read32,
++	copy_from:	wep_copy_from,
++	write8:		wep_write8,
++	write16:	wep_write16,
++	write32:	wep_write32,
++	copy_to:	wep_copy_to
++};
++
++static struct mtd_partition wep_partitions[] = {
++	{
++		name:		"Bootloader",
++		size:		0x00040000,
++		offset:		0,
++		mask_flags:	MTD_WRITEABLE  /* force read-only */
++	},{
++		name:		"Kernel",
++		size:		0x001C0000,
++		offset:		0x00040000,
++	},{
++		name:		"Filesystem",
++		size:		MTDPART_SIZ_FULL,
++		offset:		0x00200000
++	}
++};
++
++#define NB_OF(x)  (sizeof(x)/sizeof(x[0]))
++
++static struct mtd_info *mymtd;
++static struct mtd_partition *parsed_parts;
++
++extern int parse_redboot_partitions(struct mtd_info *master, struct mtd_partition **pparts);
++
++static int __init init_wep(void)
++{
++	struct mtd_partition *parts;
++	int nb_parts = 0;
++	int parsed_nr_parts = 0;
++	char *part_type = "static";
++
++	wep_map.buswidth = (BOOT_DEF & 1) ? 2 : 4;
++	printk( "Probing wep flash at physical address 0x%08x (%d-bit buswidth)\n",
++		WINDOW_ADDR, wep_map.buswidth * 8 );
++	wep_map.map_priv_1 = (unsigned long)__ioremap(WINDOW_ADDR, WINDOW_SIZE, 0);
++	if (!wep_map.map_priv_1) {
++		printk("Failed to ioremap\n");
++		return -EIO;
++	}
++	mymtd = do_map_probe("cfi_probe", &wep_map);
++	if (!mymtd) {
++		iounmap((void *)wep_map.map_priv_1);
++		return -ENXIO;
++	}
++	mymtd->module = THIS_MODULE;
++
++#ifdef CONFIG_MTD_REDBOOT_PARTS
++	if (parsed_nr_parts == 0) {
++		int ret = parse_redboot_partitions(mymtd, &parsed_parts);
++
++		if (ret > 0) {
++			part_type = "RedBoot";
++			parsed_nr_parts = ret;
++		}
++	}
++#endif
++
++	if (parsed_nr_parts > 0) {
++		parts = parsed_parts;
++		nb_parts = parsed_nr_parts;
++	} else {
++		parts = wep_partitions;
++		nb_parts = NB_OF(wep_partitions);
++	}
++	if (nb_parts) {
++		printk(KERN_NOTICE "Using %s partition definition\n", part_type);
++		add_mtd_partitions(mymtd, parts, nb_parts);
++	} else {
++		add_mtd_device(mymtd);
++	}
++	return 0;
++}
++
++static void __exit cleanup_wep(void)
++{
++	if (mymtd) {
++		del_mtd_partitions(mymtd);
++		map_destroy(mymtd);
++		if (parsed_parts)
++			kfree(parsed_parts);
++	}
++	if (wep_map.map_priv_1)
++		iounmap((void *)wep_map.map_priv_1);
++	return 0;
++}
++
++module_init(init_wep);
++module_exit(cleanup_wep);
++
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/video/Config.in linux-2.4.19-rmk7-pxa2-wep1/drivers/video/Config.in
+--- linux-2.4.19-rmk7-pxa2/drivers/video/Config.in	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/video/Config.in	2003-08-12 22:21:30.000000000 +0200
+@@ -58,6 +58,13 @@
+      if [ "$CONFIG_FB_PXA" != "n" -a "$CONFIG_ARCH_LUBBOCK" = "y" ]; then
+ 	bool '  Lubbock QVGA LCD support instead of DSTN' CONFIG_FB_PXA_QVGA
+      fi
++
++     if [ "$CONFIG_FB_PXA" != "n" -a "$CONFIG_ARCH_WEP_EP250" = "y" ]; then
++        choice 'WEP EP250 display type' \
++               "HITACHI-640x480  CONFIG_WEP_EP250_VGA  \
++                HITACHI-640x240  CONFIG_WEP_EP250_HVGA \
++                HITACHI-320x240  CONFIG_WEP_EP250_QVGA" HITACHI-640x480
++     fi
+    fi
+    dep_tristate '  CyberPro 2000/2010/5000 support' CONFIG_FB_CYBER2000 $CONFIG_PCI
+    if [ "$CONFIG_APOLLO" = "y" ]; then
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/video/lcdctrl_wep.c linux-2.4.19-rmk7-pxa2-wep1/drivers/video/lcdctrl_wep.c
+--- linux-2.4.19-rmk7-pxa2/drivers/video/lcdctrl_wep.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/video/lcdctrl_wep.c	2003-08-12 22:21:30.000000000 +0200
+@@ -0,0 +1,140 @@
++/*
++ *  lcdctrl_wep.c
++ *
++ *  Copyright (C) 2003 ETC s.r.o.
++ *
++ *  wep LCD control for backlight intensity and display and contrast.
++ *
++ *  This code is based on Intrinsyc Software Inc code.
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 as
++ *  published by the Free Software Foundation.
++ *
++ *  Written by Peter Figuli <peposh@etc.sk>, 2003
++ *
++ */
++#include <linux/config.h>
++#include <linux/module.h>
++#include <linux/kernel.h>
++#include <linux/sched.h>
++#include <linux/errno.h>
++#include <linux/string.h>
++#include <linux/ctype.h>
++#include <linux/mm.h>
++#include <linux/init.h>
++#include <linux/delay.h>
++
++#include <asm/system.h>
++#include <asm/hardware.h>
++#include <asm/io.h>
++#include <asm/irq.h>
++#include <asm/uaccess.h>
++
++#include <video/lcdctrl.h>
++
++/*
++ * Uncomment next line to get debbuging messages
++ */
++//#define DEBUGGING       1
++
++#define LCD_MAX_INTENSITY	0x10
++#define LCD_MAX_BRIGHTNESS	0x0
++#define LCD_MAX_CONTRAST	0x100
++
++#define LCD_DEFAULT_INTENSITY	 100;
++#define LCD_DEFAULT_BRIGHTNESS	  0;
++#define LCD_DEFAULT_CONTRAST	 60;
++
++/* -- prototypes -- */
++
++static int wep_lcdctrl_init( int *intensity, int *brightness, int *contrast);
++static int wep_lcdctrl_enable(void);
++static int wep_lcdctrl_disable(void);
++static int wep_lcdctrl_set_intensity( int i);
++static int wep_lcdctrl_set_brightness( int b);
++static int wep_lcdctrl_set_contrast( int c, int sync);
++
++/* -- variables -- */
++
++static int dev_contrast;
++
++/* -- -- */
++
++static struct lcdctrl_device wep_device = {
++	init: 		wep_lcdctrl_init,
++	enable:		wep_lcdctrl_enable,
++	disable:	wep_lcdctrl_disable,
++	set_intensity:	wep_lcdctrl_set_intensity,
++	set_brightness:	wep_lcdctrl_set_brightness,
++	set_contrast:	wep_lcdctrl_set_contrast
++}; 
++
++static int wep_lcdctrl_enable( void)
++{
++	GPDR2 |= GPIO_bit( GPIO77_LCD_ACBIAS );
++
++	return 0;
++}
++
++static int wep_lcdctrl_disable( void)
++{
++	GPDR2 &= ~GPIO_bit( GPIO77_LCD_ACBIAS );
++	wep_lcdctrl_set_intensity( 0 );
++	return 0;
++}
++
++static int wep_lcdctrl_set_intensity( int i)
++{
++	int dev_intensity = LCD_MAX_INTENSITY*i/100;
++
++	PWM_PWDUTY1 = LCD_MAX_INTENSITY - dev_intensity;
++#ifdef DEBUGGING
++		printk(KERN_INFO "wep_lcdctrl_set_intensity: "
++			"dev_intensity = %d\n", dev_intensity);
++#endif
++	return 0;
++}
++
++static int wep_lcdctrl_set_brightness( int b)
++{
++// There is no brightness setup for current LCD displays on WEP  
++	int dev_brightness = LCD_MAX_BRIGHTNESS*b/100;
++#ifdef DEBUGGING
++		printk(KERN_INFO "wep_lcdctrl_set_brightness: "
++			"dev_brightness = %d\n", dev_brightness);
++#endif
++	return 0;
++}
++
++static int wep_lcdctrl_set_contrast( int c, int sync)
++{
++	int dev_contrast = LCD_MAX_CONTRAST*c/100;
++
++	PWM_PWDUTY0 = dev_contrast;
++#ifdef DEBUGGING
++		printk(KERN_INFO "wep_lcdctrl_set_contrast: "
++			"dev_contrast = %d\n", dev_contrast);
++#endif
++	return 0;
++}
++
++/* -- -- */
++
++static int wep_lcdctrl_init( int *intensity, int *brightness, int *contrast)
++{
++	*intensity = LCD_DEFAULT_INTENSITY;
++	*brightness = LCD_DEFAULT_BRIGHTNESS;
++	*contrast = LCD_DEFAULT_CONTRAST;
++
++#ifdef DEBUGGING
++		printk(KERN_INFO "wep_lcdctrl_init: OK\n");
++#endif
++	return 0;
++}
++
++/* this is the hook for lcdctrl to access to the device specifics */
++struct lcdctrl_device *lcdctrl_device_get_ops(void)
++{
++	return &wep_device;
++}
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/video/Makefile linux-2.4.19-rmk7-pxa2-wep1/drivers/video/Makefile
+--- linux-2.4.19-rmk7-pxa2/drivers/video/Makefile	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/video/Makefile	2003-08-12 22:21:30.000000000 +0200
+@@ -118,6 +118,9 @@
+ ifeq ($(CONFIG_PXA_CERF_PDA),y)
+ obj-$(CONFIG_FB_PXA)              += lcdctrl.o lcdctrl_cerf.o
+ endif
++ifeq ($(CONFIG_ARCH_WEP_EP250),y)
++obj-$(CONFIG_FB_PXA)              += lcdctrl.o lcdctrl_wep.o
++endif
+ obj-$(CONFIG_FB_VIRTUAL)          += vfb.o  
+ obj-$(CONFIG_FB_HIT)              += hitfb.o fbgen.o
+ obj-$(CONFIG_FB_E1355)            += epson1355fb.o fbgen.o
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/video/pxafb.c linux-2.4.19-rmk7-pxa2-wep1/drivers/video/pxafb.c
+--- linux-2.4.19-rmk7-pxa2/drivers/video/pxafb.c	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/video/pxafb.c	2003-08-12 22:21:31.000000000 +0200
+@@ -277,7 +277,8 @@
+ 		 * so don't complain
+ 		 */
+ 		if (machine_is_lubbock() ||
+-		    machine_is_pxa_cerf()) {
++		    machine_is_pxa_cerf() ||
++		    machine_is_wep_ep250()) {
+ 			ret = 0;
+ 		} else
+ 			/* make sure we are in active mode */
+@@ -741,6 +742,19 @@
+ 		LCCR2_BegFrmDel(var->upper_margin) +
+ 		LCCR2_EndFrmDel(var->lower_margin);
+ 	new_regs.lccr3 = fbi->lccr3;
++#elif defined (CONFIG_ARCH_WEP_EP250)
++	new_regs.lccr0 = fbi->lccr0;
++	new_regs.lccr1 =
++		LCCR1_DisWdth(var->xres) +
++		LCCR1_HorSnchWdth(var->hsync_len) +
++		LCCR1_BegLnDel(var->left_margin) +
++		LCCR1_EndLnDel(var->right_margin);
++	new_regs.lccr2 =
++		LCCR2_DisHght(var->yres) +
++		LCCR2_VrtSnchWdth(var->vsync_len) +
++		LCCR2_BegFrmDel(var->upper_margin) +
++		LCCR2_EndFrmDel(var->lower_margin);
++	new_regs.lccr3 = fbi->lccr3;
+ #else
+ 	// FIXME using hardcoded values for now
+ 	new_regs.lccr0 = fbi->lccr0;
+@@ -878,6 +892,9 @@
+ 		FB_BACKLIGHT_ON();
+ 	}
+ #endif
++#ifdef CONFIG_ARCH_WEP_EP250
++	lcdctrl_enable();
++#endif
+ }
+ 
+ /*
+@@ -894,6 +911,9 @@
+ 		FB_BACKLIGHT_OFF();
+ 	}
+ #endif
++#ifdef CONFIG_ARCH_WEP_EP250
++	PWM_PWDUTY1 = 0x10;
++#endif
+ 	
+ }
+ 
+@@ -914,6 +934,9 @@
+ 		FB_VLCD_ON();	// FIXME this should be after scanning starts
+ 	}
+ #endif
++#ifdef CONFIG_ARCH_WEP_EP250
++	lcdctrl_enable();
++#endif
+ }
+ 
+ static void pxafb_power_down_lcd(struct pxafb_info *fbi)
+@@ -933,6 +956,9 @@
+ 		FB_VLCD_OFF();	// FIXME this should be before scanning stops
+ 	}
+ #endif
++#ifdef CONFIG_ARCH_WEP_EP250
++	lcdctrl_disable();
++#endif
+ 
+ }
+ 
+@@ -962,6 +988,14 @@
+         else if (((lccr0 & LCCR0_CMS) && ((lccr0 & LCCR0_SDS) || (lccr0 & LCCR0_DPD))) ||
+                  (!(lccr0 & LCCR0_CMS) && !(lccr0 & LCCR0_PAS) && !(lccr0 & LCCR0_SDS)))
+         {
++#ifdef CONFIG_ARCH_WEP_EP250
++	  // We use ACBIAS to activate display => different setting here
++                GPDR1 |= (0x3f << 26);
++                GPDR2 |= 0x1C03;//(0x3);
++
++		GAFR1_U = (GAFR1_U & ~(0xfff << 20)) | (0xaaa << 20);
++                GAFR2_L = 0x2A0000A;//(GAFR2_L & ~0xf) | (0xa);
++#else
+ 		// bits 58-65
+                 GPDR1 |= (0x3f << 26);
+                 GPDR2 |= (0x3);
+@@ -972,17 +1006,27 @@
+                 // bits 74-77
+                 GPDR2 |= (0xf << 10);
+                 GAFR2_L = (GAFR2_L & ~(0xff << 20)) | (0xaa << 20);
++#endif
+         }
+ 
+         /* 16 bit interface */
+         else if (!(lccr0 & LCCR0_CMS) && ((lccr0 & LCCR0_SDS) || (lccr0 & LCCR0_PAS)))
+         {
++#ifdef CONFIG_ARCH_WEP_EP250
++	  // We use ACBIAS to activate display => different setting here
++                GPDR1 |= (0x3f << 26);
++                GPDR2 |= 0x00001fff;
++
++                GAFR1_U = (GAFR1_U & ~(0xfff << 20)) | (0xaaa << 20);
++                GAFR2_L = (GAFR2_L & 0xf0000000) | 0x02aaaaaa;
++#else
+ 		// bits 58-77
+                 GPDR1 |= (0x3f << 26);
+                 GPDR2 |= 0x00003fff;
+ 
+                 GAFR1_U = (GAFR1_U & ~(0xfff << 20)) | (0xaaa << 20);
+                 GAFR2_L = (GAFR2_L & 0xf0000000) | 0x0aaaaaaa;
++#endif
+         }
+ 	else
+ 	{
+@@ -1348,7 +1392,7 @@
+ 	if (!fbi)
+ 		goto failed;
+ 
+-	if(machine_is_pxa_cerf()) {
++	if(machine_is_pxa_cerf() || machine_is_wep_ep250()) {
+ 		// brightness&contrast is handled via lcdctrl.
+ 		lcdctrl_init();
+ 	}
+diff -urN linux-2.4.19-rmk7-pxa2/drivers/video/pxafb.h linux-2.4.19-rmk7-pxa2-wep1/drivers/video/pxafb.h
+--- linux-2.4.19-rmk7-pxa2/drivers/video/pxafb.h	2003-08-12 22:08:56.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/drivers/video/pxafb.h	2003-08-12 22:21:31.000000000 +0200
+@@ -235,4 +235,56 @@
+ #define LCD_LCCR0			(LCCR0_LDM | LCCR0_SFM | LCCR0_IUM | LCCR0_EFM | LCCR0_QDM | LCCR0_BM  | LCCR0_OUM)
+ #define LCD_LCCR3 			(LCCR3_PCP | LCCR3_PixClkDiv(0x12) | LCCR3_Bpp(PXAFB_BPP_BITS) | LCCR3_Acb(0x18))
+ 
++#elif defined (CONFIG_ARCH_WEP_EP250)
++#if defined (CONFIG_WEP_EP250_VGA)
++
++#define LCD_PIXCLOCK			20095
++#define LCD_BPP				PXAFB_BPP
++#define LCD_XRES			640
++#define LCD_YRES			480
++#define LCD_HORIZONTAL_SYNC_PULSE_WIDTH	4
++#define LCD_VERTICAL_SYNC_PULSE_WIDTH	10
++#define LCD_BEGIN_OF_LINE_WAIT_COUNT	3
++#define LCD_BEGIN_FRAME_WAIT_COUNT 	0
++#define LCD_END_OF_LINE_WAIT_COUNT	3
++#define LCD_END_OF_FRAME_WAIT_COUNT	0
++#define LCD_SYNC			(FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT)
++#define LCD_LCCR0			(LCCR0_LDM | LCCR0_SFM | LCCR0_IUM | LCCR0_EFM | LCCR0_QDM | LCCR0_BM  | LCCR0_OUM)
++
++#define LCD_LCCR3 			(LCCR3_PCP | LCCR3_PixClkDiv(3) | LCCR3_Bpp(PXAFB_BPP_BITS) | LCCR3_Acb(0xFF))
++
++#elif defined (CONFIG_WEP_EP250_HVGA)
++#define LCD_PIXCLOCK			100470
++#define LCD_BPP				PXAFB_BPP
++#define LCD_XRES			640
++#define LCD_YRES			240
++#define LCD_HORIZONTAL_SYNC_PULSE_WIDTH	1
++#define LCD_VERTICAL_SYNC_PULSE_WIDTH	3
++#define LCD_BEGIN_OF_LINE_WAIT_COUNT	1
++#define LCD_BEGIN_FRAME_WAIT_COUNT 	0
++#define LCD_END_OF_LINE_WAIT_COUNT	1
++#define LCD_END_OF_FRAME_WAIT_COUNT	0
++#define LCD_SYNC			(FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT)
++#define LCD_LCCR0			(LCCR0_LDM | LCCR0_SFM | LCCR0_IUM | LCCR0_EFM | LCCR0_QDM | LCCR0_BM  | LCCR0_OUM)
++
++#define LCD_LCCR3 			(LCCR3_PCP | LCCR3_PixClkDiv(11) | LCCR3_Bpp(PXAFB_BPP_BITS) | LCCR3_Acb(0xFF))
++#elif defined(CONFIG_WEP_EP250_QVGA)
++#define LCD_PIXCLOCK			210991
++#define LCD_BPP				PXAFB_BPP
++#define LCD_XRES			320
++#define LCD_YRES			240
++#define LCD_HORIZONTAL_SYNC_PULSE_WIDTH	1
++#define LCD_VERTICAL_SYNC_PULSE_WIDTH	6
++#define LCD_BEGIN_OF_LINE_WAIT_COUNT	1
++#define LCD_BEGIN_FRAME_WAIT_COUNT 	0
++#define LCD_END_OF_LINE_WAIT_COUNT	1
++#define LCD_END_OF_FRAME_WAIT_COUNT	0
++#define LCD_SYNC			(FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT)
++#define LCD_LCCR0			(LCCR0_LDM | LCCR0_SFM | LCCR0_IUM | LCCR0_EFM | LCCR0_QDM | LCCR0_BM  | LCCR0_OUM)
++
++#define LCD_LCCR3 			(LCCR3_PCP | LCCR3_PixClkDiv(22) | LCCR3_Bpp(PXAFB_BPP_BITS) | LCCR3_Acb(0xFF))
++#else
++#error "Unknow WEP EP250 display type!"
++#endif /* CONFIG_ARCH_WEP_EP250 */
++
+ #endif
+diff -urN linux-2.4.19-rmk7-pxa2/include/asm-arm/arch-pxa/wep-ep250.h linux-2.4.19-rmk7-pxa2-wep1/include/asm-arm/arch-pxa/wep-ep250.h
+--- linux-2.4.19-rmk7-pxa2/include/asm-arm/arch-pxa/wep-ep250.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.19-rmk7-pxa2-wep1/include/asm-arm/arch-pxa/wep-ep250.h	2003-08-12 22:21:31.000000000 +0200
+@@ -0,0 +1,19 @@
++
++
++/*
++ * Philips UCB 1400 
++ */
++
++#define WEP_UCB1400_IRQ_GPIO 2
++
++
++
++
++#define WEP_CTRL_GSM_IOCTL 1
++#define WEP_CTRL_IRDA_IOCTL 2
++#define WEP_CTRL_GPS_IOCTL 3
++#define WEP_CTRL_BCR_IOCTL 4
++#define WEP_CTRL_EXTERN_SSUART_IOCTL 5
++
++
++
+diff -urN linux-2.4.19-rmk7-pxa2/include/linux/miscdevice.h linux-2.4.19-rmk7-pxa2-wep1/include/linux/miscdevice.h
+--- linux-2.4.19-rmk7-pxa2/include/linux/miscdevice.h	2002-08-03 02:39:45.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/include/linux/miscdevice.h	2003-08-12 22:21:31.000000000 +0200
+@@ -14,6 +14,7 @@
+ #define PC110PAD_MINOR 9
+ #define ADB_MOUSE_MINOR 10
+ #define MK712_MINOR 15			/* MK712 touch screen */
++#define WEP_CTRL_MINOR 16
+ #define WATCHDOG_MINOR		130	/* Watchdog timer     */
+ #define TEMP_MINOR		131	/* Temperature Sensor */
+ #define RTC_MINOR 135
+diff -urN linux-2.4.19-rmk7-pxa2/Makefile linux-2.4.19-rmk7-pxa2-wep1/Makefile
+--- linux-2.4.19-rmk7-pxa2/Makefile	2003-08-12 22:08:52.000000000 +0200
++++ linux-2.4.19-rmk7-pxa2-wep1/Makefile	2003-08-12 22:22:02.000000000 +0200
+@@ -1,7 +1,7 @@
+ VERSION = 2
+ PATCHLEVEL = 4
+ SUBLEVEL = 19
+-EXTRAVERSION = -rmk7-pxa2
++EXTRAVERSION = -rmk7-pxa2-wep1
+ 
+ KERNELRELEASE=$(VERSION).$(PATCHLEVEL).$(SUBLEVEL)$(EXTRAVERSION)
+ 
