@@ -1,14 +1,14 @@
-# $Id: cross-binutils.spec,v 1.3 2003/05/15 08:44:57 telka Exp $
+# $Id: cross-binutils.spec,v 1.4 2003/06/19 09:12:01 telka Exp $
 
 Summary: Cross GNU collection of binary utilities.
 Name: cross-binutils
-Version: 2.13.2.1
-Release: 3
+Version: 2.14
+Release: 1
 License: GPL
 Group: Development/Tools
 URL: http://sources.redhat.com/binutils
 Packager: Marcel Telka <marcel@telka.sk>
-Source: ftp://sources.redhat.com/pub/binutils/releases/binutils-2.13.2.1.tar.bz2
+Source: ftp://sources.redhat.com/pub/binutils/releases/binutils-2.14.tar.bz2
 
 Buildroot: /var/tmp/cross-binutils
 
@@ -89,6 +89,9 @@ rm -rf build-arm-linux
 rm -rf %{buildroot}
 
 %changelog
+* Thu Jun 19 2003 Marcel Telka <marcel@telka.sk> 2.14-1
+- updated for binutils-2.14
+
 * Thu May 15 2003 Marcel Telka <marcel@telka.sk> 2.13.2.1-3
 - fixed path for man and info documentation
 - removed invalid man documentation from packages
