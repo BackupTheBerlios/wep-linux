@@ -1,9 +1,9 @@
-# $Id: cross-binutils.spec,v 1.1 2003/05/14 13:27:49 telka Exp $
+# $Id: cross-binutils.spec,v 1.2 2003/05/14 19:42:18 telka Exp $
 
 Summary: Cross GNU collection of binary utilities.
 Name: cross-binutils
 Version: 2.13.2.1
-Release: 1
+Release: 2
 License: GPL
 Group: Development/Tools
 URL: http://sources.redhat.com/binutils
@@ -11,32 +11,44 @@ Packager: Marcel Telka <marcel@telka.sk>
 Source: ftp://sources.redhat.com/pub/binutils/releases/binutils-2.13.2.1.tar.bz2
 
 Buildroot: /var/tmp/cross-binutils
-BuildRequires: texinfo >= 4.0
 
 %define _prefix /opt/cross
 
 %description
 This is a collection of binary utlities cross compiled for various targets.
 
-%package -n cross-binutils-common
+%package common
 Summary: Common cross GNU collection of binary utilities.
 Group: Development/Tools
 
-%description -n cross-binutils-common
+%description common
 This is a common package for collection of binary utlities cross compiled for various targets.
 
-%package -n cross-binutils-arm-linux
+%package arm-elf
+Summary: Cross GNU collection of binary utilities for arm-elf target.
+Group: Development/Tools
+Requires: cross-binutils-common = %{version}-%{release}
+
+%description arm-elf
+This is a collection of binary utlities cross compiled for arm-elf target.
+
+%package arm-linux
 Summary: Cross GNU collection of binary utilities for arm-linux target.
 Group: Development/Tools
 Requires: cross-binutils-common = %{version}-%{release}
 
-%description -n cross-binutils-arm-linux
+%description arm-linux
 This is a collection of binary utlities cross compiled for arm-linux target.
 
 %prep
 %setup -q -c
 
 %build
+mkdir build-arm-elf
+cd build-arm-elf
+../binutils-%{version}/configure --target=arm-elf --prefix=%{_prefix}
+make
+cd ..
 mkdir build-arm-linux
 cd build-arm-linux
 ../binutils-%{version}/configure --target=arm-linux --prefix=%{_prefix}
@@ -45,25 +57,41 @@ make
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}
-cd build-arm-linux
+cd build-arm-elf
 %makeinstall
-rm -rf %{buildroot}/usr/share/info
+cd ../build-arm-linux
+%makeinstall
+rm -f %{buildroot}%{_infodir}/dir
 
-%files -n cross-binutils-common
+%files common
 %defattr(-,root,root)
 %{_prefix}/lib/libiberty.a
 %{_prefix}/share/locale/*
+%doc %{_infodir}/*info*
 
-%files -n cross-binutils-arm-linux
+%files arm-elf
+%defattr(-,root,root)
+%{_prefix}/arm-elf/*
+%{_prefix}/bin/arm-elf-*
+%doc %{_mandir}/*
+
+%files arm-linux
 %defattr(-,root,root)
 %{_prefix}/arm-linux/*
-%{_prefix}/bin/*
+%{_prefix}/bin/arm-linux-*
 %doc %{_mandir}/*
 
 %clean
+rm -rf build-arm-elf
 rm -rf build-arm-linux
 rm -rf %{buildroot}
 
 %changelog
+* Wed May 14 2003 Marcel Telka <marcel@telka.sk> 2.13.2.1-2
+- added arm-elf target
+- added info documentation into common package
+- simplified package names
+- removed texinfo from BuildRequires
+
 * Wed May 14 2003 Marcel Telka <marcel@telka.sk> 2.13.2.1-1
 - initial spec file
